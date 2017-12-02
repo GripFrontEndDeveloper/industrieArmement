@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le :  sam. 02 déc. 2017 à 19:22
+-- Généré le :  sam. 02 déc. 2017 à 19:57
 -- Version du serveur :  10.1.28-MariaDB
 -- Version de PHP :  5.6.32
 
@@ -28,6 +28,7 @@ SET time_zone = "+00:00";
 -- Structure de la table `actions`
 --
 
+DROP TABLE IF EXISTS `actions`;
 CREATE TABLE `actions` (
   `aid` varchar(255) NOT NULL DEFAULT '0' COMMENT 'Primary Key: Unique actions ID.',
   `type` varchar(32) NOT NULL DEFAULT '' COMMENT 'The object that that action acts on (node, user, comment, system or custom types.)',
@@ -36,6 +37,11 @@ CREATE TABLE `actions` (
   `label` varchar(255) NOT NULL DEFAULT '0' COMMENT 'Label of the action.'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Stores action information.';
 
+--
+-- Tronquer la table avant d'insérer `actions`
+--
+
+TRUNCATE TABLE `actions`;
 --
 -- Déchargement des données de la table `actions`
 --
@@ -60,6 +66,7 @@ INSERT INTO `actions` (`aid`, `type`, `callback`, `parameters`, `label`) VALUES
 -- Structure de la table `authmap`
 --
 
+DROP TABLE IF EXISTS `authmap`;
 CREATE TABLE `authmap` (
   `aid` int(10) UNSIGNED NOT NULL COMMENT 'Primary Key: Unique authmap ID.',
   `uid` int(11) NOT NULL DEFAULT '0' COMMENT 'User’s users.uid.',
@@ -67,12 +74,18 @@ CREATE TABLE `authmap` (
   `module` varchar(128) NOT NULL DEFAULT '' COMMENT 'Module which is controlling the authentication.'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Stores distributed authentication mapping.';
 
+--
+-- Tronquer la table avant d'insérer `authmap`
+--
+
+TRUNCATE TABLE `authmap`;
 -- --------------------------------------------------------
 
 --
 -- Structure de la table `batch`
 --
 
+DROP TABLE IF EXISTS `batch`;
 CREATE TABLE `batch` (
   `bid` int(10) UNSIGNED NOT NULL COMMENT 'Primary Key: Unique batch ID.',
   `token` varchar(64) NOT NULL COMMENT 'A string token generated against the current user’s session id and the batch id, used to ensure that only the user who submitted the batch can effectively access it.',
@@ -80,12 +93,18 @@ CREATE TABLE `batch` (
   `batch` longblob COMMENT 'A serialized array containing the processing data for the batch.'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Stores details about batches (processes that run in...';
 
+--
+-- Tronquer la table avant d'insérer `batch`
+--
+
+TRUNCATE TABLE `batch`;
 -- --------------------------------------------------------
 
 --
 -- Structure de la table `block`
 --
 
+DROP TABLE IF EXISTS `block`;
 CREATE TABLE `block` (
   `bid` int(11) NOT NULL COMMENT 'Primary Key: Unique block ID.',
   `module` varchar(64) NOT NULL DEFAULT '' COMMENT 'The module from which the block originates; for example, ’user’ for the Who’s Online block, and ’block’ for any custom blocks.',
@@ -101,6 +120,11 @@ CREATE TABLE `block` (
   `cache` tinyint(4) NOT NULL DEFAULT '1' COMMENT 'Binary flag to indicate block cache mode. (-2: Custom cache, -1: Do not cache, 1: Cache per role, 2: Cache per user, 4: Cache per page, 8: Block cache global) See DRUPAL_CACHE_* constants in ../includes/common.inc for more detailed information.'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Stores block settings, such as region and visibility...';
 
+--
+-- Tronquer la table avant d'insérer `block`
+--
+
+TRUNCATE TABLE `block`;
 --
 -- Déchargement des données de la table `block`
 --
@@ -143,17 +167,24 @@ INSERT INTO `block` (`bid`, `module`, `delta`, `theme`, `status`, `weight`, `reg
 -- Structure de la table `blocked_ips`
 --
 
+DROP TABLE IF EXISTS `blocked_ips`;
 CREATE TABLE `blocked_ips` (
   `iid` int(10) UNSIGNED NOT NULL COMMENT 'Primary Key: unique ID for IP addresses.',
   `ip` varchar(40) NOT NULL DEFAULT '' COMMENT 'IP address'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Stores blocked IP addresses.';
 
+--
+-- Tronquer la table avant d'insérer `blocked_ips`
+--
+
+TRUNCATE TABLE `blocked_ips`;
 -- --------------------------------------------------------
 
 --
 -- Structure de la table `block_custom`
 --
 
+DROP TABLE IF EXISTS `block_custom`;
 CREATE TABLE `block_custom` (
   `bid` int(10) UNSIGNED NOT NULL COMMENT 'The block’s block.bid.',
   `body` longtext COMMENT 'Block contents.',
@@ -161,36 +192,54 @@ CREATE TABLE `block_custom` (
   `format` varchar(255) DEFAULT NULL COMMENT 'The filter_format.format of the block body.'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Stores contents of custom-made blocks.';
 
+--
+-- Tronquer la table avant d'insérer `block_custom`
+--
+
+TRUNCATE TABLE `block_custom`;
 -- --------------------------------------------------------
 
 --
 -- Structure de la table `block_node_type`
 --
 
+DROP TABLE IF EXISTS `block_node_type`;
 CREATE TABLE `block_node_type` (
   `module` varchar(64) NOT NULL COMMENT 'The block’s origin module, from block.module.',
   `delta` varchar(32) NOT NULL COMMENT 'The block’s unique delta within module, from block.delta.',
   `type` varchar(32) NOT NULL COMMENT 'The machine-readable name of this type from node_type.type.'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Sets up display criteria for blocks based on content types';
 
+--
+-- Tronquer la table avant d'insérer `block_node_type`
+--
+
+TRUNCATE TABLE `block_node_type`;
 -- --------------------------------------------------------
 
 --
 -- Structure de la table `block_role`
 --
 
+DROP TABLE IF EXISTS `block_role`;
 CREATE TABLE `block_role` (
   `module` varchar(64) NOT NULL COMMENT 'The block’s origin module, from block.module.',
   `delta` varchar(32) NOT NULL COMMENT 'The block’s unique delta within module, from block.delta.',
   `rid` int(10) UNSIGNED NOT NULL COMMENT 'The user’s role ID from users_roles.rid.'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Sets up access permissions for blocks based on user roles';
 
+--
+-- Tronquer la table avant d'insérer `block_role`
+--
+
+TRUNCATE TABLE `block_role`;
 -- --------------------------------------------------------
 
 --
 -- Structure de la table `cache`
 --
 
+DROP TABLE IF EXISTS `cache`;
 CREATE TABLE `cache` (
   `cid` varchar(255) NOT NULL DEFAULT '' COMMENT 'Primary Key: Unique cache ID.',
   `data` longblob COMMENT 'A collection of data to cache.',
@@ -199,6 +248,11 @@ CREATE TABLE `cache` (
   `serialized` smallint(6) NOT NULL DEFAULT '0' COMMENT 'A flag to indicate whether content is serialized (1) or not (0).'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Generic cache table for caching things not separated out...';
 
+--
+-- Tronquer la table avant d'insérer `cache`
+--
+
+TRUNCATE TABLE `cache`;
 --
 -- Déchargement des données de la table `cache`
 --
@@ -232,6 +286,7 @@ INSERT INTO `cache` (`cid`, `data`, `expire`, `created`, `serialized`) VALUES
 -- Structure de la table `cache_block`
 --
 
+DROP TABLE IF EXISTS `cache_block`;
 CREATE TABLE `cache_block` (
   `cid` varchar(255) NOT NULL DEFAULT '' COMMENT 'Primary Key: Unique cache ID.',
   `data` longblob COMMENT 'A collection of data to cache.',
@@ -240,12 +295,18 @@ CREATE TABLE `cache_block` (
   `serialized` smallint(6) NOT NULL DEFAULT '0' COMMENT 'A flag to indicate whether content is serialized (1) or not (0).'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Cache table for the Block module to store already built...';
 
+--
+-- Tronquer la table avant d'insérer `cache_block`
+--
+
+TRUNCATE TABLE `cache_block`;
 -- --------------------------------------------------------
 
 --
 -- Structure de la table `cache_bootstrap`
 --
 
+DROP TABLE IF EXISTS `cache_bootstrap`;
 CREATE TABLE `cache_bootstrap` (
   `cid` varchar(255) NOT NULL DEFAULT '' COMMENT 'Primary Key: Unique cache ID.',
   `data` longblob COMMENT 'A collection of data to cache.',
@@ -254,6 +315,11 @@ CREATE TABLE `cache_bootstrap` (
   `serialized` smallint(6) NOT NULL DEFAULT '0' COMMENT 'A flag to indicate whether content is serialized (1) or not (0).'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Cache table for data required to bootstrap Drupal, may be...';
 
+--
+-- Tronquer la table avant d'insérer `cache_bootstrap`
+--
+
+TRUNCATE TABLE `cache_bootstrap`;
 --
 -- Déchargement des données de la table `cache_bootstrap`
 --
@@ -274,6 +340,7 @@ INSERT INTO `cache_bootstrap` (`cid`, `data`, `expire`, `created`, `serialized`)
 -- Structure de la table `cache_field`
 --
 
+DROP TABLE IF EXISTS `cache_field`;
 CREATE TABLE `cache_field` (
   `cid` varchar(255) NOT NULL DEFAULT '' COMMENT 'Primary Key: Unique cache ID.',
   `data` longblob COMMENT 'A collection of data to cache.',
@@ -282,6 +349,11 @@ CREATE TABLE `cache_field` (
   `serialized` smallint(6) NOT NULL DEFAULT '0' COMMENT 'A flag to indicate whether content is serialized (1) or not (0).'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Cache table for the Field module to store already built...';
 
+--
+-- Tronquer la table avant d'insérer `cache_field`
+--
+
+TRUNCATE TABLE `cache_field`;
 --
 -- Déchargement des données de la table `cache_field`
 --
@@ -301,6 +373,7 @@ INSERT INTO `cache_field` (`cid`, `data`, `expire`, `created`, `serialized`) VAL
 -- Structure de la table `cache_filter`
 --
 
+DROP TABLE IF EXISTS `cache_filter`;
 CREATE TABLE `cache_filter` (
   `cid` varchar(255) NOT NULL DEFAULT '' COMMENT 'Primary Key: Unique cache ID.',
   `data` longblob COMMENT 'A collection of data to cache.',
@@ -309,12 +382,18 @@ CREATE TABLE `cache_filter` (
   `serialized` smallint(6) NOT NULL DEFAULT '0' COMMENT 'A flag to indicate whether content is serialized (1) or not (0).'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Cache table for the Filter module to store already...';
 
+--
+-- Tronquer la table avant d'insérer `cache_filter`
+--
+
+TRUNCATE TABLE `cache_filter`;
 -- --------------------------------------------------------
 
 --
 -- Structure de la table `cache_form`
 --
 
+DROP TABLE IF EXISTS `cache_form`;
 CREATE TABLE `cache_form` (
   `cid` varchar(255) NOT NULL DEFAULT '' COMMENT 'Primary Key: Unique cache ID.',
   `data` longblob COMMENT 'A collection of data to cache.',
@@ -323,12 +402,18 @@ CREATE TABLE `cache_form` (
   `serialized` smallint(6) NOT NULL DEFAULT '0' COMMENT 'A flag to indicate whether content is serialized (1) or not (0).'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Cache table for the form system to store recently built...';
 
+--
+-- Tronquer la table avant d'insérer `cache_form`
+--
+
+TRUNCATE TABLE `cache_form`;
 -- --------------------------------------------------------
 
 --
 -- Structure de la table `cache_image`
 --
 
+DROP TABLE IF EXISTS `cache_image`;
 CREATE TABLE `cache_image` (
   `cid` varchar(255) NOT NULL DEFAULT '' COMMENT 'Primary Key: Unique cache ID.',
   `data` longblob COMMENT 'A collection of data to cache.',
@@ -337,12 +422,18 @@ CREATE TABLE `cache_image` (
   `serialized` smallint(6) NOT NULL DEFAULT '0' COMMENT 'A flag to indicate whether content is serialized (1) or not (0).'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Cache table used to store information about image...';
 
+--
+-- Tronquer la table avant d'insérer `cache_image`
+--
+
+TRUNCATE TABLE `cache_image`;
 -- --------------------------------------------------------
 
 --
 -- Structure de la table `cache_menu`
 --
 
+DROP TABLE IF EXISTS `cache_menu`;
 CREATE TABLE `cache_menu` (
   `cid` varchar(255) NOT NULL DEFAULT '' COMMENT 'Primary Key: Unique cache ID.',
   `data` longblob COMMENT 'A collection of data to cache.',
@@ -351,6 +442,11 @@ CREATE TABLE `cache_menu` (
   `serialized` smallint(6) NOT NULL DEFAULT '0' COMMENT 'A flag to indicate whether content is serialized (1) or not (0).'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Cache table for the menu system to store router...';
 
+--
+-- Tronquer la table avant d'insérer `cache_menu`
+--
+
+TRUNCATE TABLE `cache_menu`;
 --
 -- Déchargement des données de la table `cache_menu`
 --
@@ -398,6 +494,7 @@ INSERT INTO `cache_menu` (`cid`, `data`, `expire`, `created`, `serialized`) VALU
 -- Structure de la table `cache_page`
 --
 
+DROP TABLE IF EXISTS `cache_page`;
 CREATE TABLE `cache_page` (
   `cid` varchar(255) NOT NULL DEFAULT '' COMMENT 'Primary Key: Unique cache ID.',
   `data` longblob COMMENT 'A collection of data to cache.',
@@ -406,12 +503,18 @@ CREATE TABLE `cache_page` (
   `serialized` smallint(6) NOT NULL DEFAULT '0' COMMENT 'A flag to indicate whether content is serialized (1) or not (0).'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Cache table used to store compressed pages for anonymous...';
 
+--
+-- Tronquer la table avant d'insérer `cache_page`
+--
+
+TRUNCATE TABLE `cache_page`;
 -- --------------------------------------------------------
 
 --
 -- Structure de la table `cache_path`
 --
 
+DROP TABLE IF EXISTS `cache_path`;
 CREATE TABLE `cache_path` (
   `cid` varchar(255) NOT NULL DEFAULT '' COMMENT 'Primary Key: Unique cache ID.',
   `data` longblob COMMENT 'A collection of data to cache.',
@@ -420,12 +523,18 @@ CREATE TABLE `cache_path` (
   `serialized` smallint(6) NOT NULL DEFAULT '0' COMMENT 'A flag to indicate whether content is serialized (1) or not (0).'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Cache table for path alias lookup.';
 
+--
+-- Tronquer la table avant d'insérer `cache_path`
+--
+
+TRUNCATE TABLE `cache_path`;
 -- --------------------------------------------------------
 
 --
 -- Structure de la table `cache_update`
 --
 
+DROP TABLE IF EXISTS `cache_update`;
 CREATE TABLE `cache_update` (
   `cid` varchar(255) NOT NULL DEFAULT '' COMMENT 'Primary Key: Unique cache ID.',
   `data` longblob COMMENT 'A collection of data to cache.',
@@ -434,6 +543,11 @@ CREATE TABLE `cache_update` (
   `serialized` smallint(6) NOT NULL DEFAULT '0' COMMENT 'A flag to indicate whether content is serialized (1) or not (0).'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Cache table for the Update module to store information...';
 
+--
+-- Tronquer la table avant d'insérer `cache_update`
+--
+
+TRUNCATE TABLE `cache_update`;
 --
 -- Déchargement des données de la table `cache_update`
 --
@@ -451,6 +565,7 @@ INSERT INTO `cache_update` (`cid`, `data`, `expire`, `created`, `serialized`) VA
 -- Structure de la table `comment`
 --
 
+DROP TABLE IF EXISTS `comment`;
 CREATE TABLE `comment` (
   `cid` int(11) NOT NULL COMMENT 'Primary Key: Unique comment ID.',
   `pid` int(11) NOT NULL DEFAULT '0' COMMENT 'The comment.cid to which this comment is a reply. If set to 0, this comment is not a reply to an existing comment.',
@@ -468,12 +583,18 @@ CREATE TABLE `comment` (
   `language` varchar(12) NOT NULL DEFAULT '' COMMENT 'The languages.language of this comment.'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Stores comments and associated data.';
 
+--
+-- Tronquer la table avant d'insérer `comment`
+--
+
+TRUNCATE TABLE `comment`;
 -- --------------------------------------------------------
 
 --
 -- Structure de la table `date_formats`
 --
 
+DROP TABLE IF EXISTS `date_formats`;
 CREATE TABLE `date_formats` (
   `dfid` int(10) UNSIGNED NOT NULL COMMENT 'The date format identifier.',
   `format` varchar(100) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL COMMENT 'The date format string.',
@@ -481,6 +602,11 @@ CREATE TABLE `date_formats` (
   `locked` tinyint(4) NOT NULL DEFAULT '0' COMMENT 'Whether or not this format can be modified.'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Stores configured date formats.';
 
+--
+-- Tronquer la table avant d'insérer `date_formats`
+--
+
+TRUNCATE TABLE `date_formats`;
 --
 -- Déchargement des données de la table `date_formats`
 --
@@ -528,24 +654,36 @@ INSERT INTO `date_formats` (`dfid`, `format`, `type`, `locked`) VALUES
 -- Structure de la table `date_format_locale`
 --
 
+DROP TABLE IF EXISTS `date_format_locale`;
 CREATE TABLE `date_format_locale` (
   `format` varchar(100) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL COMMENT 'The date format string.',
   `type` varchar(64) NOT NULL COMMENT 'The date format type, e.g. medium.',
   `language` varchar(12) NOT NULL COMMENT 'A languages.language for this format to be used with.'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Stores configured date formats for each locale.';
 
+--
+-- Tronquer la table avant d'insérer `date_format_locale`
+--
+
+TRUNCATE TABLE `date_format_locale`;
 -- --------------------------------------------------------
 
 --
 -- Structure de la table `date_format_type`
 --
 
+DROP TABLE IF EXISTS `date_format_type`;
 CREATE TABLE `date_format_type` (
   `type` varchar(64) NOT NULL COMMENT 'The date format type, e.g. medium.',
   `title` varchar(255) NOT NULL COMMENT 'The human readable name of the format type.',
   `locked` tinyint(4) NOT NULL DEFAULT '0' COMMENT 'Whether or not this is a system provided format.'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Stores configured date format types.';
 
+--
+-- Tronquer la table avant d'insérer `date_format_type`
+--
+
+TRUNCATE TABLE `date_format_type`;
 --
 -- Déchargement des données de la table `date_format_type`
 --
@@ -561,6 +699,7 @@ INSERT INTO `date_format_type` (`type`, `title`, `locked`) VALUES
 -- Structure de la table `field_config`
 --
 
+DROP TABLE IF EXISTS `field_config`;
 CREATE TABLE `field_config` (
   `id` int(11) NOT NULL COMMENT 'The primary identifier for a field',
   `field_name` varchar(32) NOT NULL COMMENT 'The name of this field. Non-deleted field names are unique, but multiple deleted fields can have the same name.',
@@ -578,6 +717,11 @@ CREATE TABLE `field_config` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
+-- Tronquer la table avant d'insérer `field_config`
+--
+
+TRUNCATE TABLE `field_config`;
+--
 -- Déchargement des données de la table `field_config`
 --
 
@@ -593,6 +737,7 @@ INSERT INTO `field_config` (`id`, `field_name`, `type`, `module`, `active`, `sto
 -- Structure de la table `field_config_instance`
 --
 
+DROP TABLE IF EXISTS `field_config_instance`;
 CREATE TABLE `field_config_instance` (
   `id` int(11) NOT NULL COMMENT 'The primary identifier for a field instance',
   `field_id` int(11) NOT NULL COMMENT 'The identifier of the field attached by this instance',
@@ -603,6 +748,11 @@ CREATE TABLE `field_config_instance` (
   `deleted` tinyint(4) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Tronquer la table avant d'insérer `field_config_instance`
+--
+
+TRUNCATE TABLE `field_config_instance`;
 --
 -- Déchargement des données de la table `field_config_instance`
 --
@@ -633,6 +783,7 @@ INSERT INTO `field_config_instance` (`id`, `field_id`, `field_name`, `entity_typ
 -- Structure de la table `field_data_body`
 --
 
+DROP TABLE IF EXISTS `field_data_body`;
 CREATE TABLE `field_data_body` (
   `entity_type` varchar(128) NOT NULL DEFAULT '' COMMENT 'The entity type this data is attached to',
   `bundle` varchar(128) NOT NULL DEFAULT '' COMMENT 'The field instance bundle to which this row belongs, used when deleting a field instance',
@@ -646,12 +797,18 @@ CREATE TABLE `field_data_body` (
   `body_format` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Data storage for field 2 (body)';
 
+--
+-- Tronquer la table avant d'insérer `field_data_body`
+--
+
+TRUNCATE TABLE `field_data_body`;
 -- --------------------------------------------------------
 
 --
 -- Structure de la table `field_data_comment_body`
 --
 
+DROP TABLE IF EXISTS `field_data_comment_body`;
 CREATE TABLE `field_data_comment_body` (
   `entity_type` varchar(128) NOT NULL DEFAULT '' COMMENT 'The entity type this data is attached to',
   `bundle` varchar(128) NOT NULL DEFAULT '' COMMENT 'The field instance bundle to which this row belongs, used when deleting a field instance',
@@ -664,12 +821,18 @@ CREATE TABLE `field_data_comment_body` (
   `comment_body_format` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Data storage for field 1 (comment_body)';
 
+--
+-- Tronquer la table avant d'insérer `field_data_comment_body`
+--
+
+TRUNCATE TABLE `field_data_comment_body`;
 -- --------------------------------------------------------
 
 --
 -- Structure de la table `field_data_field_image`
 --
 
+DROP TABLE IF EXISTS `field_data_field_image`;
 CREATE TABLE `field_data_field_image` (
   `entity_type` varchar(128) NOT NULL DEFAULT '' COMMENT 'The entity type this data is attached to',
   `bundle` varchar(128) NOT NULL DEFAULT '' COMMENT 'The field instance bundle to which this row belongs, used when deleting a field instance',
@@ -685,12 +848,18 @@ CREATE TABLE `field_data_field_image` (
   `field_image_height` int(10) UNSIGNED DEFAULT NULL COMMENT 'The height of the image in pixels.'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Data storage for field 4 (field_image)';
 
+--
+-- Tronquer la table avant d'insérer `field_data_field_image`
+--
+
+TRUNCATE TABLE `field_data_field_image`;
 -- --------------------------------------------------------
 
 --
 -- Structure de la table `field_data_field_tags`
 --
 
+DROP TABLE IF EXISTS `field_data_field_tags`;
 CREATE TABLE `field_data_field_tags` (
   `entity_type` varchar(128) NOT NULL DEFAULT '' COMMENT 'The entity type this data is attached to',
   `bundle` varchar(128) NOT NULL DEFAULT '' COMMENT 'The field instance bundle to which this row belongs, used when deleting a field instance',
@@ -702,12 +871,18 @@ CREATE TABLE `field_data_field_tags` (
   `field_tags_tid` int(10) UNSIGNED DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Data storage for field 3 (field_tags)';
 
+--
+-- Tronquer la table avant d'insérer `field_data_field_tags`
+--
+
+TRUNCATE TABLE `field_data_field_tags`;
 -- --------------------------------------------------------
 
 --
 -- Structure de la table `field_revision_body`
 --
 
+DROP TABLE IF EXISTS `field_revision_body`;
 CREATE TABLE `field_revision_body` (
   `entity_type` varchar(128) NOT NULL DEFAULT '' COMMENT 'The entity type this data is attached to',
   `bundle` varchar(128) NOT NULL DEFAULT '' COMMENT 'The field instance bundle to which this row belongs, used when deleting a field instance',
@@ -721,12 +896,18 @@ CREATE TABLE `field_revision_body` (
   `body_format` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Revision archive storage for field 2 (body)';
 
+--
+-- Tronquer la table avant d'insérer `field_revision_body`
+--
+
+TRUNCATE TABLE `field_revision_body`;
 -- --------------------------------------------------------
 
 --
 -- Structure de la table `field_revision_comment_body`
 --
 
+DROP TABLE IF EXISTS `field_revision_comment_body`;
 CREATE TABLE `field_revision_comment_body` (
   `entity_type` varchar(128) NOT NULL DEFAULT '' COMMENT 'The entity type this data is attached to',
   `bundle` varchar(128) NOT NULL DEFAULT '' COMMENT 'The field instance bundle to which this row belongs, used when deleting a field instance',
@@ -739,12 +920,18 @@ CREATE TABLE `field_revision_comment_body` (
   `comment_body_format` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Revision archive storage for field 1 (comment_body)';
 
+--
+-- Tronquer la table avant d'insérer `field_revision_comment_body`
+--
+
+TRUNCATE TABLE `field_revision_comment_body`;
 -- --------------------------------------------------------
 
 --
 -- Structure de la table `field_revision_field_image`
 --
 
+DROP TABLE IF EXISTS `field_revision_field_image`;
 CREATE TABLE `field_revision_field_image` (
   `entity_type` varchar(128) NOT NULL DEFAULT '' COMMENT 'The entity type this data is attached to',
   `bundle` varchar(128) NOT NULL DEFAULT '' COMMENT 'The field instance bundle to which this row belongs, used when deleting a field instance',
@@ -760,12 +947,18 @@ CREATE TABLE `field_revision_field_image` (
   `field_image_height` int(10) UNSIGNED DEFAULT NULL COMMENT 'The height of the image in pixels.'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Revision archive storage for field 4 (field_image)';
 
+--
+-- Tronquer la table avant d'insérer `field_revision_field_image`
+--
+
+TRUNCATE TABLE `field_revision_field_image`;
 -- --------------------------------------------------------
 
 --
 -- Structure de la table `field_revision_field_tags`
 --
 
+DROP TABLE IF EXISTS `field_revision_field_tags`;
 CREATE TABLE `field_revision_field_tags` (
   `entity_type` varchar(128) NOT NULL DEFAULT '' COMMENT 'The entity type this data is attached to',
   `bundle` varchar(128) NOT NULL DEFAULT '' COMMENT 'The field instance bundle to which this row belongs, used when deleting a field instance',
@@ -777,12 +970,18 @@ CREATE TABLE `field_revision_field_tags` (
   `field_tags_tid` int(10) UNSIGNED DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Revision archive storage for field 3 (field_tags)';
 
+--
+-- Tronquer la table avant d'insérer `field_revision_field_tags`
+--
+
+TRUNCATE TABLE `field_revision_field_tags`;
 -- --------------------------------------------------------
 
 --
 -- Structure de la table `file_managed`
 --
 
+DROP TABLE IF EXISTS `file_managed`;
 CREATE TABLE `file_managed` (
   `fid` int(10) UNSIGNED NOT NULL COMMENT 'File ID.',
   `uid` int(10) UNSIGNED NOT NULL DEFAULT '0' COMMENT 'The users.uid of the user who is associated with the file.',
@@ -794,12 +993,18 @@ CREATE TABLE `file_managed` (
   `timestamp` int(10) UNSIGNED NOT NULL DEFAULT '0' COMMENT 'UNIX timestamp for when the file was added.'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Stores information for uploaded files.';
 
+--
+-- Tronquer la table avant d'insérer `file_managed`
+--
+
+TRUNCATE TABLE `file_managed`;
 -- --------------------------------------------------------
 
 --
 -- Structure de la table `file_usage`
 --
 
+DROP TABLE IF EXISTS `file_usage`;
 CREATE TABLE `file_usage` (
   `fid` int(10) UNSIGNED NOT NULL COMMENT 'File ID.',
   `module` varchar(255) NOT NULL DEFAULT '' COMMENT 'The name of the module that is using the file.',
@@ -808,12 +1013,18 @@ CREATE TABLE `file_usage` (
   `count` int(10) UNSIGNED NOT NULL DEFAULT '0' COMMENT 'The number of times this file is used by this object.'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Track where a file is used.';
 
+--
+-- Tronquer la table avant d'insérer `file_usage`
+--
+
+TRUNCATE TABLE `file_usage`;
 -- --------------------------------------------------------
 
 --
 -- Structure de la table `filter`
 --
 
+DROP TABLE IF EXISTS `filter`;
 CREATE TABLE `filter` (
   `format` varchar(255) NOT NULL COMMENT 'Foreign key: The filter_format.format to which this filter is assigned.',
   `module` varchar(64) NOT NULL DEFAULT '' COMMENT 'The origin module of the filter.',
@@ -823,6 +1034,11 @@ CREATE TABLE `filter` (
   `settings` longblob COMMENT 'A serialized array of name value pairs that store the filter settings for the specific format.'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Table that maps filters (HTML corrector) to text formats ...';
 
+--
+-- Tronquer la table avant d'insérer `filter`
+--
+
+TRUNCATE TABLE `filter`;
 --
 -- Déchargement des données de la table `filter`
 --
@@ -850,6 +1066,7 @@ INSERT INTO `filter` (`format`, `module`, `name`, `weight`, `status`, `settings`
 -- Structure de la table `filter_format`
 --
 
+DROP TABLE IF EXISTS `filter_format`;
 CREATE TABLE `filter_format` (
   `format` varchar(255) NOT NULL COMMENT 'Primary Key: Unique machine name of the format.',
   `name` varchar(255) NOT NULL DEFAULT '' COMMENT 'Name of the text format (Filtered HTML).',
@@ -858,6 +1075,11 @@ CREATE TABLE `filter_format` (
   `weight` int(11) NOT NULL DEFAULT '0' COMMENT 'Weight of text format to use when listing.'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Stores text formats: custom groupings of filters, such as...';
 
+--
+-- Tronquer la table avant d'insérer `filter_format`
+--
+
+TRUNCATE TABLE `filter_format`;
 --
 -- Déchargement des données de la table `filter_format`
 --
@@ -873,6 +1095,7 @@ INSERT INTO `filter_format` (`format`, `name`, `cache`, `status`, `weight`) VALU
 -- Structure de la table `flood`
 --
 
+DROP TABLE IF EXISTS `flood`;
 CREATE TABLE `flood` (
   `fid` int(11) NOT NULL COMMENT 'Unique flood event ID.',
   `event` varchar(64) NOT NULL DEFAULT '' COMMENT 'Name of event (e.g. contact).',
@@ -881,24 +1104,36 @@ CREATE TABLE `flood` (
   `expiration` int(11) NOT NULL DEFAULT '0' COMMENT 'Expiration timestamp. Expired events are purged on cron run.'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Flood controls the threshold of events, such as the...';
 
+--
+-- Tronquer la table avant d'insérer `flood`
+--
+
+TRUNCATE TABLE `flood`;
 -- --------------------------------------------------------
 
 --
 -- Structure de la table `history`
 --
 
+DROP TABLE IF EXISTS `history`;
 CREATE TABLE `history` (
   `uid` int(11) NOT NULL DEFAULT '0' COMMENT 'The users.uid that read the node nid.',
   `nid` int(10) UNSIGNED NOT NULL DEFAULT '0' COMMENT 'The node.nid that was read.',
   `timestamp` int(11) NOT NULL DEFAULT '0' COMMENT 'The Unix timestamp at which the read occurred.'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='A record of which users have read which nodes.';
 
+--
+-- Tronquer la table avant d'insérer `history`
+--
+
+TRUNCATE TABLE `history`;
 -- --------------------------------------------------------
 
 --
 -- Structure de la table `image_effects`
 --
 
+DROP TABLE IF EXISTS `image_effects`;
 CREATE TABLE `image_effects` (
   `ieid` int(10) UNSIGNED NOT NULL COMMENT 'The primary identifier for an image effect.',
   `isid` int(10) UNSIGNED NOT NULL DEFAULT '0' COMMENT 'The image_styles.isid for an image style.',
@@ -907,30 +1142,47 @@ CREATE TABLE `image_effects` (
   `data` longblob NOT NULL COMMENT 'The configuration data for the effect.'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Stores configuration options for image effects.';
 
+--
+-- Tronquer la table avant d'insérer `image_effects`
+--
+
+TRUNCATE TABLE `image_effects`;
 -- --------------------------------------------------------
 
 --
 -- Structure de la table `image_styles`
 --
 
+DROP TABLE IF EXISTS `image_styles`;
 CREATE TABLE `image_styles` (
   `isid` int(10) UNSIGNED NOT NULL COMMENT 'The primary identifier for an image style.',
   `name` varchar(255) NOT NULL COMMENT 'The style machine name.',
   `label` varchar(255) NOT NULL DEFAULT '' COMMENT 'The style administrative name.'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Stores configuration options for image styles.';
 
+--
+-- Tronquer la table avant d'insérer `image_styles`
+--
+
+TRUNCATE TABLE `image_styles`;
 -- --------------------------------------------------------
 
 --
 -- Structure de la table `menu_custom`
 --
 
+DROP TABLE IF EXISTS `menu_custom`;
 CREATE TABLE `menu_custom` (
   `menu_name` varchar(32) NOT NULL DEFAULT '' COMMENT 'Primary Key: Unique key for menu. This is used as a block delta so length is 32.',
   `title` varchar(255) NOT NULL DEFAULT '' COMMENT 'Menu title; displayed at top of block.',
   `description` text COMMENT 'Menu description.'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Holds definitions for top-level custom menus (for example...';
 
+--
+-- Tronquer la table avant d'insérer `menu_custom`
+--
+
+TRUNCATE TABLE `menu_custom`;
 --
 -- Déchargement des données de la table `menu_custom`
 --
@@ -947,6 +1199,7 @@ INSERT INTO `menu_custom` (`menu_name`, `title`, `description`) VALUES
 -- Structure de la table `menu_links`
 --
 
+DROP TABLE IF EXISTS `menu_links`;
 CREATE TABLE `menu_links` (
   `menu_name` varchar(32) NOT NULL DEFAULT '' COMMENT 'The menu name. All links with the same menu name (such as ’navigation’) are part of the same menu.',
   `mlid` int(10) UNSIGNED NOT NULL COMMENT 'The menu link ID (mlid) is the integer primary key.',
@@ -975,6 +1228,11 @@ CREATE TABLE `menu_links` (
   `updated` smallint(6) NOT NULL DEFAULT '0' COMMENT 'Flag that indicates that this link was generated during the update from Drupal 5.'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Contains the individual links within a menu.';
 
+--
+-- Tronquer la table avant d'insérer `menu_links`
+--
+
+TRUNCATE TABLE `menu_links`;
 --
 -- Déchargement des données de la table `menu_links`
 --
@@ -1263,6 +1521,7 @@ INSERT INTO `menu_links` (`menu_name`, `mlid`, `plid`, `link_path`, `router_path
 -- Structure de la table `menu_router`
 --
 
+DROP TABLE IF EXISTS `menu_router`;
 CREATE TABLE `menu_router` (
   `path` varchar(255) NOT NULL DEFAULT '' COMMENT 'Primary Key: the Drupal path this entry describes',
   `load_functions` blob NOT NULL COMMENT 'A serialized array of function names (like node_load) to be called to load an object corresponding to a part of the current path.',
@@ -1289,6 +1548,11 @@ CREATE TABLE `menu_router` (
   `include_file` mediumtext COMMENT 'The file to include for this element, usually the page callback function lives in this file.'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Maps paths to various callbacks (access, page and title)';
 
+--
+-- Tronquer la table avant d'insérer `menu_router`
+--
+
+TRUNCATE TABLE `menu_router`;
 --
 -- Déchargement des données de la table `menu_router`
 --
@@ -1612,6 +1876,7 @@ INSERT INTO `menu_router` (`path`, `load_functions`, `to_arg_functions`, `access
 -- Structure de la table `node`
 --
 
+DROP TABLE IF EXISTS `node`;
 CREATE TABLE `node` (
   `nid` int(10) UNSIGNED NOT NULL COMMENT 'The primary identifier for a node.',
   `vid` int(10) UNSIGNED DEFAULT NULL COMMENT 'The current node_revision.vid version identifier.',
@@ -1629,12 +1894,18 @@ CREATE TABLE `node` (
   `translate` int(11) NOT NULL DEFAULT '0' COMMENT 'A boolean indicating whether this translation page needs to be updated.'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='The base table for nodes.';
 
+--
+-- Tronquer la table avant d'insérer `node`
+--
+
+TRUNCATE TABLE `node`;
 -- --------------------------------------------------------
 
 --
 -- Structure de la table `node_access`
 --
 
+DROP TABLE IF EXISTS `node_access`;
 CREATE TABLE `node_access` (
   `nid` int(10) UNSIGNED NOT NULL DEFAULT '0' COMMENT 'The node.nid this record affects.',
   `gid` int(10) UNSIGNED NOT NULL DEFAULT '0' COMMENT 'The grant ID a user must possess in the specified realm to gain this row’s privileges on the node.',
@@ -1644,6 +1915,11 @@ CREATE TABLE `node_access` (
   `grant_delete` tinyint(3) UNSIGNED NOT NULL DEFAULT '0' COMMENT 'Boolean indicating whether a user with the realm/grant pair can delete this node.'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Identifies which realm/grant pairs a user must possess in...';
 
+--
+-- Tronquer la table avant d'insérer `node_access`
+--
+
+TRUNCATE TABLE `node_access`;
 --
 -- Déchargement des données de la table `node_access`
 --
@@ -1657,6 +1933,7 @@ INSERT INTO `node_access` (`nid`, `gid`, `realm`, `grant_view`, `grant_update`, 
 -- Structure de la table `node_comment_statistics`
 --
 
+DROP TABLE IF EXISTS `node_comment_statistics`;
 CREATE TABLE `node_comment_statistics` (
   `nid` int(10) UNSIGNED NOT NULL DEFAULT '0' COMMENT 'The node.nid for which the statistics are compiled.',
   `cid` int(11) NOT NULL DEFAULT '0' COMMENT 'The comment.cid of the last comment.',
@@ -1666,12 +1943,18 @@ CREATE TABLE `node_comment_statistics` (
   `comment_count` int(10) UNSIGNED NOT NULL DEFAULT '0' COMMENT 'The total number of comments on this node.'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Maintains statistics of node and comments posts to show ...';
 
+--
+-- Tronquer la table avant d'insérer `node_comment_statistics`
+--
+
+TRUNCATE TABLE `node_comment_statistics`;
 -- --------------------------------------------------------
 
 --
 -- Structure de la table `node_revision`
 --
 
+DROP TABLE IF EXISTS `node_revision`;
 CREATE TABLE `node_revision` (
   `nid` int(10) UNSIGNED NOT NULL DEFAULT '0' COMMENT 'The node this version belongs to.',
   `vid` int(10) UNSIGNED NOT NULL COMMENT 'The primary identifier for this version.',
@@ -1685,12 +1968,18 @@ CREATE TABLE `node_revision` (
   `sticky` int(11) NOT NULL DEFAULT '0' COMMENT 'Boolean indicating whether the node (at the time of this revision) should be displayed at the top of lists in which it appears.'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Stores information about each saved version of a node.';
 
+--
+-- Tronquer la table avant d'insérer `node_revision`
+--
+
+TRUNCATE TABLE `node_revision`;
 -- --------------------------------------------------------
 
 --
 -- Structure de la table `node_type`
 --
 
+DROP TABLE IF EXISTS `node_type`;
 CREATE TABLE `node_type` (
   `type` varchar(32) NOT NULL COMMENT 'The machine-readable name of this type.',
   `name` varchar(255) NOT NULL DEFAULT '' COMMENT 'The human-readable name of this type.',
@@ -1707,6 +1996,11 @@ CREATE TABLE `node_type` (
   `orig_type` varchar(255) NOT NULL DEFAULT '' COMMENT 'The original machine-readable name of this node type. This may be different from the current type name if the locked field is 0.'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Stores information about all defined node types.';
 
+--
+-- Tronquer la table avant d'insérer `node_type`
+--
+
+TRUNCATE TABLE `node_type`;
 --
 -- Déchargement des données de la table `node_type`
 --
@@ -1727,6 +2021,7 @@ INSERT INTO `node_type` (`type`, `name`, `base`, `module`, `description`, `help`
 -- Structure de la table `queue`
 --
 
+DROP TABLE IF EXISTS `queue`;
 CREATE TABLE `queue` (
   `item_id` int(10) UNSIGNED NOT NULL COMMENT 'Primary Key: Unique item ID.',
   `name` varchar(255) NOT NULL DEFAULT '' COMMENT 'The queue name.',
@@ -1735,18 +2030,29 @@ CREATE TABLE `queue` (
   `created` int(11) NOT NULL DEFAULT '0' COMMENT 'Timestamp when the item was created.'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Stores items in queues.';
 
+--
+-- Tronquer la table avant d'insérer `queue`
+--
+
+TRUNCATE TABLE `queue`;
 -- --------------------------------------------------------
 
 --
 -- Structure de la table `rdf_mapping`
 --
 
+DROP TABLE IF EXISTS `rdf_mapping`;
 CREATE TABLE `rdf_mapping` (
   `type` varchar(128) NOT NULL COMMENT 'The name of the entity type a mapping applies to (node, user, comment, etc.).',
   `bundle` varchar(128) NOT NULL COMMENT 'The name of the bundle a mapping applies to.',
   `mapping` longblob COMMENT 'The serialized mapping of the bundle type and fields to RDF terms.'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Stores custom RDF mappings for user defined content types...';
 
+--
+-- Tronquer la table avant d'insérer `rdf_mapping`
+--
+
+TRUNCATE TABLE `rdf_mapping`;
 --
 -- Déchargement des données de la table `rdf_mapping`
 --
@@ -1761,6 +2067,7 @@ INSERT INTO `rdf_mapping` (`type`, `bundle`, `mapping`) VALUES
 -- Structure de la table `registry`
 --
 
+DROP TABLE IF EXISTS `registry`;
 CREATE TABLE `registry` (
   `name` varchar(255) NOT NULL DEFAULT '' COMMENT 'The name of the function, class, or interface.',
   `type` varchar(9) NOT NULL DEFAULT '' COMMENT 'Either function or class or interface.',
@@ -1769,6 +2076,11 @@ CREATE TABLE `registry` (
   `weight` int(11) NOT NULL DEFAULT '0' COMMENT 'The order in which this module’s hooks should be invoked relative to other modules. Equal-weighted modules are ordered by name.'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Each record is a function, class, or interface name and...';
 
+--
+-- Tronquer la table avant d'insérer `registry`
+--
+
+TRUNCATE TABLE `registry`;
 --
 -- Déchargement des données de la table `registry`
 --
@@ -2142,11 +2454,17 @@ INSERT INTO `registry` (`name`, `type`, `filename`, `module`, `weight`) VALUES
 -- Structure de la table `registry_file`
 --
 
+DROP TABLE IF EXISTS `registry_file`;
 CREATE TABLE `registry_file` (
   `filename` varchar(255) NOT NULL COMMENT 'Path to the file.',
   `hash` varchar(64) NOT NULL COMMENT 'sha-256 hash of the file’s contents when last parsed.'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Files parsed to build the registry.';
 
+--
+-- Tronquer la table avant d'insérer `registry_file`
+--
+
+TRUNCATE TABLE `registry_file`;
 --
 -- Déchargement des données de la table `registry_file`
 --
@@ -2268,12 +2586,18 @@ INSERT INTO `registry_file` (`filename`, `hash`) VALUES
 -- Structure de la table `role`
 --
 
+DROP TABLE IF EXISTS `role`;
 CREATE TABLE `role` (
   `rid` int(10) UNSIGNED NOT NULL COMMENT 'Primary Key: Unique role ID.',
   `name` varchar(64) NOT NULL DEFAULT '' COMMENT 'Unique role name.',
   `weight` int(11) NOT NULL DEFAULT '0' COMMENT 'The weight of this role in listings and the user interface.'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Stores user roles.';
 
+--
+-- Tronquer la table avant d'insérer `role`
+--
+
+TRUNCATE TABLE `role`;
 --
 -- Déchargement des données de la table `role`
 --
@@ -2289,12 +2613,18 @@ INSERT INTO `role` (`rid`, `name`, `weight`) VALUES
 -- Structure de la table `role_permission`
 --
 
+DROP TABLE IF EXISTS `role_permission`;
 CREATE TABLE `role_permission` (
   `rid` int(10) UNSIGNED NOT NULL COMMENT 'Foreign Key: role.rid.',
   `permission` varchar(128) NOT NULL DEFAULT '' COMMENT 'A single permission granted to the role identified by rid.',
   `module` varchar(255) NOT NULL DEFAULT '' COMMENT 'The module declaring the permission.'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Stores the permissions assigned to user roles.';
 
+--
+-- Tronquer la table avant d'insérer `role_permission`
+--
+
+TRUNCATE TABLE `role_permission`;
 --
 -- Déchargement des données de la table `role_permission`
 --
@@ -2377,6 +2707,7 @@ INSERT INTO `role_permission` (`rid`, `permission`, `module`) VALUES
 -- Structure de la table `search_dataset`
 --
 
+DROP TABLE IF EXISTS `search_dataset`;
 CREATE TABLE `search_dataset` (
   `sid` int(10) UNSIGNED NOT NULL DEFAULT '0' COMMENT 'Search item ID, e.g. node ID for nodes.',
   `type` varchar(16) NOT NULL COMMENT 'Type of item, e.g. node.',
@@ -2384,12 +2715,18 @@ CREATE TABLE `search_dataset` (
   `reindex` int(10) UNSIGNED NOT NULL DEFAULT '0' COMMENT 'Set to force node reindexing.'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Stores items that will be searched.';
 
+--
+-- Tronquer la table avant d'insérer `search_dataset`
+--
+
+TRUNCATE TABLE `search_dataset`;
 -- --------------------------------------------------------
 
 --
 -- Structure de la table `search_index`
 --
 
+DROP TABLE IF EXISTS `search_index`;
 CREATE TABLE `search_index` (
   `word` varchar(50) NOT NULL DEFAULT '' COMMENT 'The search_total.word that is associated with the search item.',
   `sid` int(10) UNSIGNED NOT NULL DEFAULT '0' COMMENT 'The search_dataset.sid of the searchable item to which the word belongs.',
@@ -2397,12 +2734,18 @@ CREATE TABLE `search_index` (
   `score` float DEFAULT NULL COMMENT 'The numeric score of the word, higher being more important.'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Stores the search index, associating words, items and...';
 
+--
+-- Tronquer la table avant d'insérer `search_index`
+--
+
+TRUNCATE TABLE `search_index`;
 -- --------------------------------------------------------
 
 --
 -- Structure de la table `search_node_links`
 --
 
+DROP TABLE IF EXISTS `search_node_links`;
 CREATE TABLE `search_node_links` (
   `sid` int(10) UNSIGNED NOT NULL DEFAULT '0' COMMENT 'The search_dataset.sid of the searchable item containing the link to the node.',
   `type` varchar(16) NOT NULL DEFAULT '' COMMENT 'The search_dataset.type of the searchable item containing the link to the node.',
@@ -2410,39 +2753,62 @@ CREATE TABLE `search_node_links` (
   `caption` longtext COMMENT 'The text used to link to the node.nid.'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Stores items (like nodes) that link to other nodes, used...';
 
+--
+-- Tronquer la table avant d'insérer `search_node_links`
+--
+
+TRUNCATE TABLE `search_node_links`;
 -- --------------------------------------------------------
 
 --
 -- Structure de la table `search_total`
 --
 
+DROP TABLE IF EXISTS `search_total`;
 CREATE TABLE `search_total` (
   `word` varchar(50) NOT NULL DEFAULT '' COMMENT 'Primary Key: Unique word in the search index.',
   `count` float DEFAULT NULL COMMENT 'The count of the word in the index using Zipf’s law to equalize the probability distribution.'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Stores search totals for words.';
 
+--
+-- Tronquer la table avant d'insérer `search_total`
+--
+
+TRUNCATE TABLE `search_total`;
 -- --------------------------------------------------------
 
 --
 -- Structure de la table `semaphore`
 --
 
+DROP TABLE IF EXISTS `semaphore`;
 CREATE TABLE `semaphore` (
   `name` varchar(255) NOT NULL DEFAULT '' COMMENT 'Primary Key: Unique name.',
   `value` varchar(255) NOT NULL DEFAULT '' COMMENT 'A value for the semaphore.',
   `expire` double NOT NULL COMMENT 'A Unix timestamp with microseconds indicating when the semaphore should expire.'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Table for holding semaphores, locks, flags, etc. that...';
 
+--
+-- Tronquer la table avant d'insérer `semaphore`
+--
+
+TRUNCATE TABLE `semaphore`;
 -- --------------------------------------------------------
 
 --
 -- Structure de la table `sequences`
 --
 
+DROP TABLE IF EXISTS `sequences`;
 CREATE TABLE `sequences` (
   `value` int(10) UNSIGNED NOT NULL COMMENT 'The value of the sequence.'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Stores IDs.';
 
+--
+-- Tronquer la table avant d'insérer `sequences`
+--
+
+TRUNCATE TABLE `sequences`;
 --
 -- Déchargement des données de la table `sequences`
 --
@@ -2456,6 +2822,7 @@ INSERT INTO `sequences` (`value`) VALUES
 -- Structure de la table `sessions`
 --
 
+DROP TABLE IF EXISTS `sessions`;
 CREATE TABLE `sessions` (
   `uid` int(10) UNSIGNED NOT NULL COMMENT 'The users.uid corresponding to a session, or 0 for anonymous user.',
   `sid` varchar(128) NOT NULL COMMENT 'A session ID. The value is generated by Drupal’s session handlers.',
@@ -2466,6 +2833,11 @@ CREATE TABLE `sessions` (
   `session` longblob COMMENT 'The serialized contents of $_SESSION, an array of name/value pairs that persists across page requests by this session ID. Drupal loads $_SESSION from here at the start of each request and saves it at the end.'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Drupal’s session handlers read and write into the...';
 
+--
+-- Tronquer la table avant d'insérer `sessions`
+--
+
+TRUNCATE TABLE `sessions`;
 --
 -- Déchargement des données de la table `sessions`
 --
@@ -2479,11 +2851,17 @@ INSERT INTO `sessions` (`uid`, `sid`, `ssid`, `hostname`, `timestamp`, `cache`, 
 -- Structure de la table `shortcut_set`
 --
 
+DROP TABLE IF EXISTS `shortcut_set`;
 CREATE TABLE `shortcut_set` (
   `set_name` varchar(32) NOT NULL DEFAULT '' COMMENT 'Primary Key: The menu_links.menu_name under which the set’s links are stored.',
   `title` varchar(255) NOT NULL DEFAULT '' COMMENT 'The title of the set.'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Stores information about sets of shortcuts links.';
 
+--
+-- Tronquer la table avant d'insérer `shortcut_set`
+--
+
+TRUNCATE TABLE `shortcut_set`;
 --
 -- Déchargement des données de la table `shortcut_set`
 --
@@ -2497,17 +2875,24 @@ INSERT INTO `shortcut_set` (`set_name`, `title`) VALUES
 -- Structure de la table `shortcut_set_users`
 --
 
+DROP TABLE IF EXISTS `shortcut_set_users`;
 CREATE TABLE `shortcut_set_users` (
   `uid` int(10) UNSIGNED NOT NULL DEFAULT '0' COMMENT 'The users.uid for this set.',
   `set_name` varchar(32) NOT NULL DEFAULT '' COMMENT 'The shortcut_set.set_name that will be displayed for this user.'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Maps users to shortcut sets.';
 
+--
+-- Tronquer la table avant d'insérer `shortcut_set_users`
+--
+
+TRUNCATE TABLE `shortcut_set_users`;
 -- --------------------------------------------------------
 
 --
 -- Structure de la table `system`
 --
 
+DROP TABLE IF EXISTS `system`;
 CREATE TABLE `system` (
   `filename` varchar(255) NOT NULL DEFAULT '' COMMENT 'The path of the primary file for this item, relative to the Drupal root; e.g. modules/node/node.module.',
   `name` varchar(255) NOT NULL DEFAULT '' COMMENT 'The name of the item; e.g. node.',
@@ -2520,6 +2905,11 @@ CREATE TABLE `system` (
   `info` blob COMMENT 'A serialized array containing information from the module’s .info file; keys can include name, description, package, version, core, dependencies, and php.'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='A list of all modules, themes, and theme engines that are...';
 
+--
+-- Tronquer la table avant d'insérer `system`
+--
+
+TRUNCATE TABLE `system`;
 --
 -- Déchargement des données de la table `system`
 --
@@ -2652,6 +3042,7 @@ INSERT INTO `system` (`filename`, `name`, `type`, `owner`, `status`, `bootstrap`
 -- Structure de la table `taxonomy_index`
 --
 
+DROP TABLE IF EXISTS `taxonomy_index`;
 CREATE TABLE `taxonomy_index` (
   `nid` int(10) UNSIGNED NOT NULL DEFAULT '0' COMMENT 'The node.nid this record tracks.',
   `tid` int(10) UNSIGNED NOT NULL DEFAULT '0' COMMENT 'The term ID.',
@@ -2659,12 +3050,18 @@ CREATE TABLE `taxonomy_index` (
   `created` int(11) NOT NULL DEFAULT '0' COMMENT 'The Unix timestamp when the node was created.'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Maintains denormalized information about node/term...';
 
+--
+-- Tronquer la table avant d'insérer `taxonomy_index`
+--
+
+TRUNCATE TABLE `taxonomy_index`;
 -- --------------------------------------------------------
 
 --
 -- Structure de la table `taxonomy_term_data`
 --
 
+DROP TABLE IF EXISTS `taxonomy_term_data`;
 CREATE TABLE `taxonomy_term_data` (
   `tid` int(10) UNSIGNED NOT NULL COMMENT 'Primary Key: Unique term ID.',
   `vid` int(10) UNSIGNED NOT NULL DEFAULT '0' COMMENT 'The taxonomy_vocabulary.vid of the vocabulary to which the term is assigned.',
@@ -2674,6 +3071,11 @@ CREATE TABLE `taxonomy_term_data` (
   `weight` int(11) NOT NULL DEFAULT '0' COMMENT 'The weight of this term in relation to other terms.'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Stores term information.';
 
+--
+-- Tronquer la table avant d'insérer `taxonomy_term_data`
+--
+
+TRUNCATE TABLE `taxonomy_term_data`;
 --
 -- Déchargement des données de la table `taxonomy_term_data`
 --
@@ -2720,11 +3122,17 @@ INSERT INTO `taxonomy_term_data` (`tid`, `vid`, `name`, `description`, `format`,
 -- Structure de la table `taxonomy_term_hierarchy`
 --
 
+DROP TABLE IF EXISTS `taxonomy_term_hierarchy`;
 CREATE TABLE `taxonomy_term_hierarchy` (
   `tid` int(10) UNSIGNED NOT NULL DEFAULT '0' COMMENT 'Primary Key: The taxonomy_term_data.tid of the term.',
   `parent` int(10) UNSIGNED NOT NULL DEFAULT '0' COMMENT 'Primary Key: The taxonomy_term_data.tid of the term’s parent. 0 indicates no parent.'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Stores the hierarchical relationship between terms.';
 
+--
+-- Tronquer la table avant d'insérer `taxonomy_term_hierarchy`
+--
+
+TRUNCATE TABLE `taxonomy_term_hierarchy`;
 --
 -- Déchargement des données de la table `taxonomy_term_hierarchy`
 --
@@ -2771,6 +3179,7 @@ INSERT INTO `taxonomy_term_hierarchy` (`tid`, `parent`) VALUES
 -- Structure de la table `taxonomy_vocabulary`
 --
 
+DROP TABLE IF EXISTS `taxonomy_vocabulary`;
 CREATE TABLE `taxonomy_vocabulary` (
   `vid` int(10) UNSIGNED NOT NULL COMMENT 'Primary Key: Unique vocabulary ID.',
   `name` varchar(255) NOT NULL DEFAULT '' COMMENT 'Name of the vocabulary.',
@@ -2781,6 +3190,11 @@ CREATE TABLE `taxonomy_vocabulary` (
   `weight` int(11) NOT NULL DEFAULT '0' COMMENT 'The weight of this vocabulary in relation to other vocabularies.'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Stores vocabulary information.';
 
+--
+-- Tronquer la table avant d'insérer `taxonomy_vocabulary`
+--
+
+TRUNCATE TABLE `taxonomy_vocabulary`;
 --
 -- Déchargement des données de la table `taxonomy_vocabulary`
 --
@@ -2797,6 +3211,7 @@ INSERT INTO `taxonomy_vocabulary` (`vid`, `name`, `machine_name`, `description`,
 -- Structure de la table `url_alias`
 --
 
+DROP TABLE IF EXISTS `url_alias`;
 CREATE TABLE `url_alias` (
   `pid` int(10) UNSIGNED NOT NULL COMMENT 'A unique path alias identifier.',
   `source` varchar(255) NOT NULL DEFAULT '' COMMENT 'The Drupal path this alias is for; e.g. node/12.',
@@ -2804,12 +3219,18 @@ CREATE TABLE `url_alias` (
   `language` varchar(12) NOT NULL DEFAULT '' COMMENT 'The language this alias is for; if ’und’, the alias will be used for unknown languages. Each Drupal path can have an alias for each supported language.'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='A list of URL aliases for Drupal paths; a user may visit...';
 
+--
+-- Tronquer la table avant d'insérer `url_alias`
+--
+
+TRUNCATE TABLE `url_alias`;
 -- --------------------------------------------------------
 
 --
 -- Structure de la table `users`
 --
 
+DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users` (
   `uid` int(10) UNSIGNED NOT NULL DEFAULT '0' COMMENT 'Primary Key: Unique user ID.',
   `name` varchar(60) NOT NULL DEFAULT '' COMMENT 'Unique user name.',
@@ -2830,6 +3251,11 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Stores user data.';
 
 --
+-- Tronquer la table avant d'insérer `users`
+--
+
+TRUNCATE TABLE `users`;
+--
 -- Déchargement des données de la table `users`
 --
 
@@ -2843,11 +3269,17 @@ INSERT INTO `users` (`uid`, `name`, `pass`, `mail`, `theme`, `signature`, `signa
 -- Structure de la table `users_roles`
 --
 
+DROP TABLE IF EXISTS `users_roles`;
 CREATE TABLE `users_roles` (
   `uid` int(10) UNSIGNED NOT NULL DEFAULT '0' COMMENT 'Primary Key: users.uid for user.',
   `rid` int(10) UNSIGNED NOT NULL DEFAULT '0' COMMENT 'Primary Key: role.rid for role.'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Maps users to roles.';
 
+--
+-- Tronquer la table avant d'insérer `users_roles`
+--
+
+TRUNCATE TABLE `users_roles`;
 --
 -- Déchargement des données de la table `users_roles`
 --
@@ -2861,11 +3293,17 @@ INSERT INTO `users_roles` (`uid`, `rid`) VALUES
 -- Structure de la table `variable`
 --
 
+DROP TABLE IF EXISTS `variable`;
 CREATE TABLE `variable` (
   `name` varchar(128) NOT NULL DEFAULT '' COMMENT 'The name of the variable.',
   `value` longblob NOT NULL COMMENT 'The value of the variable.'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Named variable/value pairs created by Drupal core or any...';
 
+--
+-- Tronquer la table avant d'insérer `variable`
+--
+
+TRUNCATE TABLE `variable`;
 --
 -- Déchargement des données de la table `variable`
 --
@@ -2993,6 +3431,7 @@ INSERT INTO `variable` (`name`, `value`) VALUES
 -- Structure de la table `watchdog`
 --
 
+DROP TABLE IF EXISTS `watchdog`;
 CREATE TABLE `watchdog` (
   `wid` int(11) NOT NULL COMMENT 'Primary Key: Unique watchdog event ID.',
   `uid` int(11) NOT NULL DEFAULT '0' COMMENT 'The users.uid of the user who triggered the event.',
@@ -3007,6 +3446,11 @@ CREATE TABLE `watchdog` (
   `timestamp` int(11) NOT NULL DEFAULT '0' COMMENT 'Unix timestamp of when event occurred.'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Table that contains logs of all system events.';
 
+--
+-- Tronquer la table avant d'insérer `watchdog`
+--
+
+TRUNCATE TABLE `watchdog`;
 --
 -- Déchargement des données de la table `watchdog`
 --
