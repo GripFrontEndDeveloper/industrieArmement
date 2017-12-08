@@ -1,0 +1,13 @@
+name = Paragraphs Mapper
+description = Allows feeds to import content to paragraph fields.
+package = Feeds
+core = 7.x
+dependencies[] = feeds
+dependencies[] = paragraphs
+
+; Information added by Drupal.org packaging script on 2017-10-14
+version = "7.x-1.0-beta4"
+core = "7.x"
+project = "feeds_para_mapper"
+datestamp = "1508023447"
+

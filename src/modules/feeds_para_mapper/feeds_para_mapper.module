@@ -1,0 +1,563 @@
+<?php
+
+   /**
+    * @file
+    * Allows feeds to import content to paragraph fields.
+    */
+
+  /**
+   * Implements hook_feeds_processor_targets_alter().
+   */
+  function feeds_para_mapper_feeds_processor_targets_alter(&$targets, $entity_type, $bundle) {
+  // Get all fields.
+  $entity_fields = field_info_instances($entity_type, $bundle);
+  $fields_to_include = [];
+  // Search for fields of type paragraphs.
+  foreach ($entity_fields as $entity_field) {
+    if ($entity_field['bundle'] == $bundle && $entity_field['widget']['module'] == "paragraphs") {
+      array_push($fields_to_include, $entity_field);
+    }
+  }
+
+  // If there are fields of type paragrahs founded.
+  if (!empty($fields_to_include)) {
+    foreach ($fields_to_include as $para_field) {
+      $targets[$para_field['label'] . ': Create'] = array(
+        'name' => t("%label", ['%label' => $para_field['label']]),
+        'field_info' => [
+          'name' => $para_field['label'],
+          'machine_name' => $para_field['field_name'],
+          'field_id' => $para_field['field_id'],
+          'bundle' => $bundle,
+          'entity_type' => $entity_type,
+        ],
+        'description' => t('A Paragraphs field from the node'),
+        'callback' => 'feeds_para_mapper_set_target',
+        'summary_callbacks' => array('feeds_para_mapper_sum_callback'),
+        'form_callbacks' => array('feeds_para_mapper_create_field_settings_form'),
+      );
+
+    }
+  }
+  return $targets;
+  }
+
+  /**
+   * For checking the target field type then set the value accordingly.
+   *
+   * @param string $source
+   *   The source value.
+   * @param object $entity
+   *   The entity that is being edited.
+   * @param array $target
+   *   The target field that is being mapped to.
+   * @param array $value
+   *   The source field value.
+   * @param array $mapping
+   *   Contains the settings form fields values.
+   */
+  function feeds_para_mapper_set_target($source, $entity, array $target, array $value, array $mapping) {
+    $info = field_info_field($mapping['selected_sub_target']);
+    $new_item = feeds_para_mapper_get_init_para($entity, $mapping, $info);
+    if (isset($info['bundles']['paragraphs_item'])) {
+      $tax_res = feeds_para_mapper_check_terms($mapping, $value[0], $info);
+      $tax_list = "";
+      if (isset($tax_res['terms'])) {
+        foreach ($tax_res['terms'] as $retTerm) {
+          $tax_list .= $retTerm['tid'] . ",";
+        }
+      }
+      if ($tax_res['terms'] && $info['type'] == "taxonomy_term_reference") {
+        // Save to a taxonomy list type field.
+        feeds_para_mapper_save_tax_terms_type($info, $mapping, $tax_list, $entity, $new_item);
+      }
+      elseif ($info['type'] == 'list_text' || $info['type'] == 'list_integer') {
+        // Save to a list type field.
+        feeds_para_mapper_save_list_type($info, $mapping, $value[0], $entity, $new_item);
+      }
+      elseif ($info['type'] == 'interval') {
+        // Save to interval field.
+        if ($new_item) {
+          feeds_para_mapper_save_interval_type($info, $mapping, $value[0], $entity, $new_item);
+        }
+      }
+      else {
+        // Save to a normal field (text, long text, number).
+        if ($new_item) {
+          feeds_para_mapper_save_normal($mapping, $value[0], $entity, $new_item);
+        }
+      }
+
+    }
+    else {
+      // Field is not a paragraph.
+    }
+  }
+
+  /**
+   * For saving a value to a normal field.
+   *
+   * @param array $mapping
+   *   Contains the settings form fields values.
+   * @param string $value
+   *   The source field value.
+   * @param object $entity
+   *   The entity that is being edited.
+   * @param object $para_entity
+   *   The newly created paragraph entity.
+   */
+  function feeds_para_mapper_save_normal(array $mapping, $value, $entity, $para_entity) {
+    if (!empty($value)) {
+      $para_entity->setHostEntity('node', $entity);
+      $para_entity->{$mapping['selected_sub_target']}['und'][0]['value'] = $value;
+      $para_entity->save();
+      feeds_para_mapper_cleanup($mapping, $entity);
+    }
+  }
+
+  /**
+   * For saving a value to "Interval" field type.
+   *
+   * @param array $field_info
+   *   The target field info.
+   * @param array $mapping
+   *   Contains the settings form fields values.
+   * @param string $value
+   *   The source field value.
+   * @param object $entity
+   *   The entity that is being edited.
+   * @param object $para_entity
+   *   The newly created paragraph entity.
+   */
+  function feeds_para_mapper_save_interval_type(array $field_info, array $mapping, $value, $entity, $para_entity) {
+    $s_values = explode(',', $value);
+    $para_entity->setHostEntity('node', $entity);
+    if ($field_info['cardinality'] >= 1) {
+      // Attach to multiple allowed values field.
+      foreach ($s_values as $key => $field_val) {
+        if (!empty($field_val)) {
+          if (strpos($field_val, 'd') !== FALSE) {
+            $cleaned = str_replace('d', '', $field_val);
+            $complete_val = ['interval' => $cleaned, 'period' => 'day'];
+            $para_entity->{$mapping['selected_sub_target']}['und'][$key] = $complete_val;
+          }
+          elseif (strpos($field_val, 'h') !== FALSE) {
+            $cleaned = str_replace('h', '', $field_val);
+            $complete_val = ['interval' => $cleaned, 'period' => 'hour'];
+            $para_entity->{$mapping['selected_sub_target']}['und'][$key] = $complete_val;
+          }
+          elseif (strpos($field_val, 'm') !== FALSE) {
+            $cleaned = str_replace('m', '', $field_val);
+            $complete_val = ['interval' => $cleaned, 'period' => 'minute'];
+            $para_entity->{$mapping['selected_sub_target']}['und'][$key] = $complete_val;
+          }
+        }
+      }
+    }
+    $para_entity->save();
+    feeds_para_mapper_cleanup($mapping, $entity);
+  }
+
+  /**
+   * For saving a value to list field type.
+   *
+   * @param array $field_info
+   *   The target field info.
+   * @param array $mapping
+   *   Contains the settings form fields values.
+   * @param string $value
+   *   The source field value.
+   * @param object $entity
+   *   The entity that is being edited.
+   * @param object $para_entity
+   *   The newly created paragraph entity.
+   */
+  function feeds_para_mapper_save_list_type(array $field_info, array $mapping, $value, $entity, $para_entity) {
+    $s_values = explode(',', $value);
+    $para_entity->setHostEntity('node', $entity);
+    if ($field_info['cardinality'] === "-1") {
+      // Attach to  multiple allowed values field.
+      foreach ($s_values as $key => $field_val) {
+        if (!empty($field_val)) {
+          $para_entity->{$mapping['selected_sub_target']}['und'][$key]['value'] = $field_val;
+        }
+      }
+      $para_entity->setHostEntity('node', $entity);
+    }
+    else {
+      for ($i = 0; $i <= $field_info['cardinality']; $i++) {
+        $para_entity->{$mapping['selected_sub_target']}['und'][$i]['value'] = $s_values[$i];
+      }
+      $para_entity->save();
+    }
+    feeds_para_mapper_cleanup($mapping, $entity);
+  }
+
+  /**
+   * For saving a value to list field type.
+   *
+   * @param array $field_info
+   *   The target field info.
+   * @param array $mapping
+   *   Contains the settings form fields values.
+   * @param string $value
+   *   The source field value.
+   * @param object $entity
+   *   The entity that is being edited.
+   * @param object $para_entity
+   *   The newly created paragraph entity.
+   */
+  function feeds_para_mapper_save_tax_terms_type(array $field_info, array $mapping, $value, $entity, $para_entity) {
+    $field_type = $field_info['type'];
+    if ($field_type == 'taxonomy_term_reference') {
+      $s_values = explode(',', $value);
+      $para_entity->setHostEntity('node', $entity);
+      if ($field_info['cardinality'] === "-1") {
+        // Attach to  multiple allowed values field.
+        foreach ($s_values as $key => $field_val) {
+          $my_term = taxonomy_term_load($field_val);
+          if ($mapping['default_voc'] == $my_term->vid) {
+            $para_entity->{$mapping['selected_sub_target']}['und'][$key]['tid'] = $field_val;
+          }
+        }
+        $para_entity->save();
+      }
+      else {
+        for ($i = 0; $i <= $field_info['cardinality']; $i++) {
+          $my_term = taxonomy_term_load($s_values[$i]);
+          if ($mapping['default_voc'] == $my_term->vid) {
+            $para_entity->{$mapping['selected_sub_target']}['und'][$i]['tid'] = $s_values[$i];
+          }
+        }
+        $para_entity->save();
+      }
+    }
+    feeds_para_mapper_cleanup($mapping, $entity);
+  }
+
+  /**
+   * Searches for terms and creates them.
+   *
+   * @param array $mapping
+   *   Contains the settings form fields values.
+   * @param string $value
+   *   The source field value.
+   * @param array $field_info
+   *   The target field info.
+   *
+   * @return array
+   *   The terms array.
+   */
+  function feeds_para_mapper_check_terms(array $mapping, $value, array $field_info) {
+    $founded_terms = [];
+    $term_save_errors = [];
+    // If we have a field of type taxonomy.
+    if ($field_info['type'] == "taxonomy_term_reference") {
+      // Convert source terms into array.
+      $terms_to_map = explode(',', $value);
+      $clean_terms = array_filter($terms_to_map, function ($val) {
+          return !empty($val);
+      });
+      // Load terms.
+      foreach ($clean_terms as $futTerm) {
+        $term = taxonomy_get_term_by_name($futTerm);
+        $term = reset($term);
+        // If we did not found the term, and settings is auto create,
+        // create the term.
+        if (empty($term) && $mapping['auto_create']) {
+          // Create the term.
+          $termArr = [
+            'vid' => $mapping['default_voc'],
+            'name' => $futTerm,
+          ];
+          $to_create = (object) $termArr;
+          $new_term = taxonomy_term_save($to_create);
+          if (isset($new_term)) {
+            $new_term = taxonomy_get_term_by_name($futTerm);
+            $new_term = reset($new_term);
+            $termArr['tid'] = $new_term->tid;
+            array_push($founded_terms, $termArr);
+          }
+          else {
+            // Save temp error to display later.
+            array_push($term_save_errors, $termArr);
+          }
+        }
+        else {
+          // We found the term, save it temp.
+          $termArr = [
+            'vid' => $term->vid,
+            'name' => $term->name,
+            'tid' => $term->tid,
+          ];
+          array_push($founded_terms, $termArr);
+        }
+      }
+    }
+    else {
+      // Target field is not a taxonomy.
+    }
+    $res = ['terms' => $founded_terms, 'errors' => $term_save_errors];
+    return $res;
+  }
+
+  /**
+   * Creates the settings form.
+   *
+   * @param array $mapping
+   *   Contains the settings form fields values.
+   * @param array $target
+   *   The target field that is being mapped to.
+   *
+   * @return array
+   *   The form markup array.
+   */
+  function feeds_para_mapper_create_field_settings_form(array $mapping, array $target) {
+    $assoc_fields = feeds_para_get_para_bundle_fields($target);
+    $form_settings = [
+      'selected_bundle' => [
+        '#type' => 'select',
+        '#options' => [t("%name", array('%name' => $target['field_info']['name']))],
+        '#value' => $target['field_info']['machine_name'],
+        "#default_value" => $mapping['selected_bundle'],
+        '#title' => 'Bundle',
+      ],
+    ];
+    $sub_targets = [];
+    foreach ($assoc_fields as $key => $aField) {
+      $sub_targets[$aField['machine_name']] = t("%label", array('%label' => $aField['label']));
+    }
+    $form_settings['selected_sub_target'] = [
+      '#type' => 'select',
+      '#options' => $sub_targets,
+      "#default_value" => $mapping['selected_sub_target'],
+      '#title' => 'Target field',
+    ];
+    foreach ($assoc_fields as $key => $aField) {
+      if (isset($aField['tax_settings'])) {
+        $form_settings['search_by'] = $aField['tax_settings']['search_by'];
+        $form_settings['auto_create'] = $aField['tax_settings']['auto_create'];
+        $form_settings['auto_create']['#default_value'] = $mapping['auto_create'];
+        $form_settings['default_voc'] = $aField['tax_settings']['default_voc'];
+        $form_settings['default_voc']['#default_value'] = $mapping['default_voc'];
+      }
+    }
+    return $form_settings;
+  }
+
+  /**
+   * Creates the summary markup for the settings form.
+   *
+   * @param array $mapping
+   *   Contains the settings form fields values.
+   *
+   * @return string
+   *   The summary markup.
+   */
+  function feeds_para_mapper_sum_callback(array $mapping) {
+    $markup = "";
+    if (!isset($mapping['selected_bundle']) && empty($mapping['selected_bundle'])) {
+      return "Please configure";
+    }
+    else {
+      $markup .= t('Create a %selected_bundle paragraph', array('%selected_bundle' => $mapping['selected_bundle']));
+    }
+    if (isset($mapping['auto_create'])) {
+      $voc = taxonomy_vocabulary_load($mapping['default_voc']);
+      $markup .= t('& auto create new terms within {$voc->name}');
+    }
+    return $markup;
+  }
+
+  /**
+   * Searches for fields that associated with the selected paragraph bundle.
+   *
+   * @param array $target
+   *   The target field that is being mapped to.
+   *
+   * @return array
+   *   The founded fields.
+   */
+  function feeds_para_get_para_bundle_fields(array $target) {
+    /* todo: note that the paragraph bundle machine name should
+     * contain some of the field machine name that is associated
+     *  with the target node.
+     */
+    $fields_list = field_info_field_map();
+    $para_assoc_fields = [];
+    // Look up all associated fields.
+    foreach ($fields_list as $key => $aField) {
+      if (isset($aField['bundles']['paragraphs_item'])) {
+        foreach ($aField['bundles']['paragraphs_item'] as $bundleKey => $field_bundle) {
+          $org_bundle = $field_bundle;
+          $field_bundle_mod = str_replace('field_', '', $field_bundle);
+          $bundle_name_ports = explode('_', $field_bundle_mod);
+          foreach ($bundle_name_ports as $port) {
+            if (strpos($target['field_info']['machine_name'], $port) !== FALSE) {
+              $aField['machine_name'] = $key;
+              $retField = field_info_instance(
+                'paragraphs_item',
+                $key,
+                $org_bundle);
+              $aField['label'] = $retField['label'];
+              array_push($para_assoc_fields, $aField);
+            }
+          }
+        }
+      }
+    }
+    foreach ($para_assoc_fields as $key => $para) {
+      if ($para['type'] == "taxonomy_term_reference") {
+        $para['tax_settings'] = feeds_para_mapper_init_tax_field_settings();
+        $para_assoc_fields[$key] = $para;
+      }
+    }
+    return $para_assoc_fields;
+  }
+
+  /**
+   * Generates the taxonomy settings form.
+   *
+   * @return array
+   *   The form markup.
+   */
+  function feeds_para_mapper_init_tax_field_settings() {
+    $vocabulary = taxonomy_get_vocabularies();
+    $checklist_vocab_array = array();
+    foreach ($vocabulary as $item) {
+      $key = $item->vid;
+      $value = $item->name;
+      $checklist_vocab_array[$key] = $value;
+    }
+    $tax_settings = [
+      'search_by' => [
+        '#type' => 'select',
+        '#options' => [
+          'term_name' => t('Term name'),
+          'tid' => t('Term ID'),
+          'guid' => t('GUID'),
+        ],
+        "#default_value" => 'Term name',
+        '#title' => t('Search taxonomy terms by:'),
+        '#description' => t("note: no need to use tamper for exploding terms, i already do this"),
+      ],
+      'default_voc' => [
+        '#type' => 'select',
+        '#options' => $checklist_vocab_array,
+        "#default_value" => 0,
+        '#title' => t('Default vocabulary'),
+        '#description' => t("Default vocabulary for new terms."),
+      ],
+      'auto_create' => [
+        '#type' => 'checkbox',
+        "#default_value" => 0,
+        '#title' => t('Auto create'),
+        '#description' => t("Create the term if it doesn't exist."),
+      ],
+    ];
+    return $tax_settings;
+  }
+
+  /**
+   * Initiates an empty paragraph entity.
+   *
+   * @param object $entity
+   *   The entity that is being edited.
+   * @param array $mapping
+   *   Contains the settings form fields values.
+   * @param array $info
+   *   The target field that is being mapped to.
+   *
+   * @return object
+   *   The newly created paragraph item.
+   */
+  function feeds_para_mapper_get_init_para($entity, array $mapping, array $info) {
+    $item = NULL;
+    // Find out if we have previously saved paragraph.
+    $has_para = isset($entity->{$mapping['selected_bundle']});
+    if ($has_para) {
+      // Get the current paragraph.
+      $para_id = $entity->{$mapping['selected_bundle']}['und'][0]['value'];
+      $para_entity = entity_load('paragraphs_item', [$para_id]);
+      $item = reset($para_entity);
+      $item->revision = TRUE;
+      $item->default_revision = $item->revision_id;
+    }
+    if (!$item && isset($info['bundles']['paragraphs_item'])) {
+      $correct_bundle = feeds_para_mapper_find_target_bundle($info, $mapping);
+      if ($correct_bundle) {
+        $item = entity_create('paragraphs_item', [
+          'bundle' => $correct_bundle,
+          'field_name' => $mapping['selected_bundle'],
+        ]);
+      }
+    }
+    return $item;
+  }
+
+  /**
+   * Checks whether or not the entity has a paragraph of a selected bundle.
+   *
+   * @param object $entity
+   *   The entity that is being edited.
+   * @param array $mapping
+   *   Contains the settings form fields values.
+   *
+   * @return bool
+   *   true if founded, otherwise false.
+   */
+  function feeds_para_mapper_has_paragraph($entity, array $mapping) {
+    if (isset($entity->{$mapping['selected_bundle']})) {
+      return TRUE;
+    }
+    else {
+      return FALSE;
+    }
+  }
+
+  /**
+   * Searches for the bundle that is associated with the target field.
+   *
+   * @param array $info
+   *   The target field that is being mapped to.
+   * @param array $mapping
+   *   Contains the settings form fields values.
+   *
+   * @return string
+   *   The founded bundle.
+   */
+  function feeds_para_mapper_find_target_bundle(array $info, array $mapping) {
+    $s_bundle = str_replace("field_", "", $mapping['selected_bundle']);
+    $s_bundle_ports = explode('_', $s_bundle);
+    $current_bundles = $info['bundles']['paragraphs_item'];
+    $found = NULL;
+    foreach ($s_bundle_ports as $s_bundle) {
+      foreach ($current_bundles as $avBundle) {
+        if (strpos($avBundle, $s_bundle) !== FALSE) {
+          $found = $avBundle;
+        }
+      }
+    }
+    return $found;
+  }
+
+  /**
+   * Removes all associated paragraphs and keep the last one.
+   *
+   * @param array $mapping
+   *   Contains the settings form fields values.
+   * @param object $entity
+   *   The entity that is being edited.
+   */
+  function feeds_para_mapper_cleanup(array $mapping, $entity) {
+    if ($has_para = feeds_para_mapper_has_paragraph($entity, $mapping)) {
+      $paras = $entity->{$mapping['selected_bundle']}['und'];
+      $paras_keys = array_keys($paras);
+      $last_key = end($paras_keys);
+      foreach ($paras_keys as $key) {
+        if ($key !== $last_key) {
+          $entity->{$mapping['selected_bundle']}['und'][$key] = NULL;
+        }
+      }
+    }
+  }

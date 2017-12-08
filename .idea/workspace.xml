@@ -2,22 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="103037ce-df07-4180-8674-bb8425343c38" name="Default" comment="fichier sql">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/sites/all/modules/feeds/feeds_import/entreprise.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/sites/all/modules/job_scheduler-7.x-2.0-alpha3/job_scheduler/CHANGELOG.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/sites/all/modules/job_scheduler-7.x-2.0-alpha3/job_scheduler/JobScheduler.inc" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/sites/all/modules/job_scheduler-7.x-2.0-alpha3/job_scheduler/JobSchedulerCronTab.inc" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/sites/all/modules/job_scheduler-7.x-2.0-alpha3/job_scheduler/LICENSE.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/sites/all/modules/job_scheduler-7.x-2.0-alpha3/job_scheduler/README.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/sites/all/modules/job_scheduler-7.x-2.0-alpha3/job_scheduler/job_scheduler.api.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/sites/all/modules/job_scheduler-7.x-2.0-alpha3/job_scheduler/job_scheduler.info" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/sites/all/modules/job_scheduler-7.x-2.0-alpha3/job_scheduler/job_scheduler.install" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/sites/all/modules/job_scheduler-7.x-2.0-alpha3/job_scheduler/job_scheduler.module" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/sites/all/modules/job_scheduler-7.x-2.0-alpha3/job_scheduler/modules/job_scheduler_trigger/README.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/sites/all/modules/job_scheduler-7.x-2.0-alpha3/job_scheduler/modules/job_scheduler_trigger/job_scheduler_trigger.admin.inc" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/sites/all/modules/job_scheduler-7.x-2.0-alpha3/job_scheduler/modules/job_scheduler_trigger/job_scheduler_trigger.info" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/sites/all/modules/job_scheduler-7.x-2.0-alpha3/job_scheduler/modules/job_scheduler_trigger/job_scheduler_trigger.install" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/sites/all/modules/job_scheduler-7.x-2.0-alpha3/job_scheduler/modules/job_scheduler_trigger/job_scheduler_trigger.module" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/import/testfeeds.csv" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/industrie_armement.sql" afterPath="$PROJECT_DIR$/db/industrie_armement.sql" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -38,90 +25,12 @@
     <select />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="entreprise.csv" pinned="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/Downloads/entreprise.csv">
-          <provider editor-type-id="csv-data-editor">
-            <state>
-              <format>
-                <csv-format name="Comma-separated (CSV)" id="Comma-separated (CSV)_id">
-                  <data>
-                    <record-format prefix="" suffix="" nullText="" quotationPolicy="as needed" valueSeparator="," recordSeparator="&#10;">
-                      <quotation>
-                        <quotes left="&quot;" right="&quot;" leftEscaped="&quot;&quot;" rightEscaped="&quot;&quot;" />
-                        <quotes left="'" right="'" leftEscaped="''" rightEscaped="''" />
-                      </quotation>
-                    </record-format>
-                  </data>
-                </csv-format>
-              </format>
-            </state>
-          </provider>
+    <leaf>
+      <file leaf-file-name="industrie_armement.sql" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/db/industrie_armement.sql">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="entrepriseTest.csv" pinned="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/Downloads/entrepriseTest.csv">
-          <provider editor-type-id="csv-data-editor">
-            <state>
-              <format>
-                <csv-format name="Comma-separated (CSV)" id="Comma-separated (CSV)_id">
-                  <data>
-                    <record-format prefix="" suffix="" nullText="" quotationPolicy="as needed" valueSeparator="," recordSeparator="&#10;">
-                      <quotation>
-                        <quotes left="&quot;" right="&quot;" leftEscaped="&quot;&quot;" rightEscaped="&quot;&quot;" />
-                        <quotes left="'" right="'" leftEscaped="''" rightEscaped="''" />
-                      </quotation>
-                    </record-format>
-                  </data>
-                </csv-format>
-              </format>
-            </state>
-          </provider>
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="entreprise (1).csv" pinned="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/Downloads/entreprise (1).csv">
-          <provider editor-type-id="csv-data-editor">
-            <state>
-              <format>
-                <csv-format name="Comma-separated (CSV)" id="Comma-separated (CSV)_id">
-                  <data>
-                    <record-format prefix="" suffix="" nullText="" quotationPolicy="as needed" valueSeparator="," recordSeparator="&#10;">
-                      <quotation>
-                        <quotes left="&quot;" right="&quot;" leftEscaped="&quot;&quot;" rightEscaped="&quot;&quot;" />
-                        <quotes left="'" right="'" leftEscaped="''" rightEscaped="''" />
-                      </quotation>
-                    </record-format>
-                  </data>
-                </csv-format>
-              </format>
-            </state>
-          </provider>
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="testfeeds.csv" pinned="false" current-in-tab="true">
-        <entry file="file://$USER_HOME$/Downloads/testfeeds.csv">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="80">
-              <caret line="4" column="140" lean-forward="true" selection-start-line="4" selection-start-column="140" selection-end-line="4" selection-end-column="140" />
+            <state relative-caret-position="440">
+              <caret line="99" column="8" lean-forward="false" selection-start-line="99" selection-start-column="0" selection-end-line="99" selection-end-column="8" />
               <folding />
             </state>
           </provider>
@@ -145,6 +54,7 @@
         <option value="$PROJECT_DIR$/src/sites/example.sites.php" />
         <option value="$USER_HOME$/Downloads/entreprise.csv" />
         <option value="$USER_HOME$/Downloads/testfeeds.csv" />
+        <option value="$USER_HOME$/Downloads/nacebelentreprise.sql" />
       </list>
     </option>
   </component>
@@ -155,8 +65,9 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
-  <component name="ProjectFrameBounds">
-    <option name="x" value="-7" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="534" />
+    <option name="y" value="282" />
     <option name="width" value="974" />
     <option name="height" value="1047" />
   </component>
@@ -183,32 +94,6 @@
               <item name="industrieArmement" type="b2602c69:ProjectViewProjectNode" />
               <item name="industrieArmement" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
-            <path>
-              <item name="industrieArmement" type="b2602c69:ProjectViewProjectNode" />
-              <item name="industrieArmement" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="industrieArmement" type="b2602c69:ProjectViewProjectNode" />
-              <item name="industrieArmement" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="sites" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="industrieArmement" type="b2602c69:ProjectViewProjectNode" />
-              <item name="industrieArmement" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="sites" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="all" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="industrieArmement" type="b2602c69:ProjectViewProjectNode" />
-              <item name="industrieArmement" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="sites" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="all" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="modules" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -219,15 +104,15 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="settings.editor.selected.configurable" value="editor.preferences.appearance" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/.." />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\GRIP02\Downloads" />
-      <recent name="C:\xampp\htdocs\industrieArmement\db" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\xampp\htdocs\industrieArmement\industrieArmement\industrieArmement" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\industrieArmement\db" />
+      <recent name="C:\Users\GRIP02\Downloads" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -260,7 +145,8 @@
       <workItem from="1512465964120" duration="4626000" />
       <workItem from="1512636572829" duration="7296000" />
       <workItem from="1512724241640" duration="2963000" />
-      <workItem from="1512730348157" duration="1345000" />
+      <workItem from="1512730348157" duration="8388000" />
+      <workItem from="1512754805009" duration="53000" />
     </task>
     <task id="LOCAL-00001" summary="structure dossier + scripts mysql">
       <created>1512237049022</created>
@@ -287,13 +173,12 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="28913000" />
+    <option name="totallyTimeSpent" value="36009000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="0" width="974" height="1047" extended-state="0" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.0" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16435432" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -385,30 +270,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/Downloads/entrepriseTest.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Downloads/entreprise (1).csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Downloads/entreprise.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/Downloads/entreprise (1).csv">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -429,7 +290,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="40">
           <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -500,7 +360,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="40">
           <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -624,13 +483,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/db/industrie_armement.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="440">
-          <caret line="99" column="8" lean-forward="false" selection-start-line="99" selection-start-column="0" selection-end-line="99" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/themes/bartik/templates/comment.tpl.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -677,7 +529,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -733,6 +584,46 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$USER_HOME$/Downloads/testfeeds.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="6" column="8" lean-forward="false" selection-start-line="6" selection-start-column="8" selection-end-line="6" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Downloads/nacebelentreprise.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-180">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Downloads/entreprise (1).csv">
+      <provider editor-type-id="csv-data-editor">
+        <state>
+          <format>
+            <csv-format name="Comma-separated (CSV)" id="Comma-separated (CSV)_id">
+              <data>
+                <record-format prefix="" suffix="" nullText="" quotationPolicy="as needed" valueSeparator="," recordSeparator="&#10;">
+                  <quotation>
+                    <quotes left="&quot;" right="&quot;" leftEscaped="&quot;&quot;" rightEscaped="&quot;&quot;" />
+                    <quotes left="'" right="'" leftEscaped="''" rightEscaped="''" />
+                  </quotation>
+                </record-format>
+              </data>
+            </csv-format>
+          </format>
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-59">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$USER_HOME$/Downloads/entrepriseTest.csv">
       <provider editor-type-id="csv-data-editor">
         <state>
@@ -757,23 +648,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/Downloads/entreprise (1).csv">
-      <provider editor-type-id="csv-data-editor">
-        <state>
-          <format>
-            <csv-format name="Comma-separated (CSV)" id="Comma-separated (CSV)_id">
-              <data>
-                <record-format prefix="" suffix="" nullText="" quotationPolicy="as needed" valueSeparator="," recordSeparator="&#10;">
-                  <quotation>
-                    <quotes left="&quot;" right="&quot;" leftEscaped="&quot;&quot;" rightEscaped="&quot;&quot;" />
-                    <quotes left="'" right="'" leftEscaped="''" rightEscaped="''" />
-                  </quotation>
-                </record-format>
-              </data>
-            </csv-format>
-          </format>
-        </state>
-      </provider>
+    <entry file="file://$USER_HOME$/Downloads/nacebel.csv">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -781,10 +656,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/Downloads/testfeeds.csv">
+    <entry file="file://$USER_HOME$/Downloads/nacebelentreprise.sql">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="80">
-          <caret line="4" column="140" lean-forward="true" selection-start-line="4" selection-start-column="140" selection-end-line="4" selection-end-column="140" />
+        <state relative-caret-position="192">
+          <caret line="34" column="37" lean-forward="false" selection-start-line="34" selection-start-column="37" selection-end-line="34" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/db/industrie_armement.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="440">
+          <caret line="99" column="8" lean-forward="false" selection-start-line="99" selection-start-column="0" selection-end-line="99" selection-end-column="8" />
           <folding />
         </state>
       </provider>
