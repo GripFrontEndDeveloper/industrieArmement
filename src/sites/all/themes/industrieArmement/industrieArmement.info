@@ -1,0 +1,30 @@
+name = Industrie de l'armement en Belgique
+description = Base de données du GRIP (Groupe de recherche et d'information sur la paix et la sécurité) sur l'industrie de l'armement en Belgique.
+core = 7.x
+
+screenshot = screenshot.png
+
+; Regions
+;----------
+regions[navigation] = Navigation principale
+regions[header] = Header
+regions[content] = Contenu du site
+regions[footer] = footer
+regions[sidebar_second] = Aside
+
+; Features
+;----------
+features[] = logo
+features[] = name
+features[] = slogan
+features[] = node_user_picture
+features[] = main_menu
+features[] = secondary menu
+
+; Stylesheets
+;----------
+stylesheets[all][] = css/style.css
+
+; Javascript
+;----------
+scripts[] = js/main.js
