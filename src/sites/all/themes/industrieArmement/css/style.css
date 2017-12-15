@@ -1,3 +1,9 @@
-body{
-    /*background-color : red;*/
+header{
+    background-color: black;
+}
+div#heroPage.row{
+    background-image: url(images/hero.jpg);
+    background-repeat: no-repeat;
+    background-attachment:fixed;
+    background-position: top right
 }
