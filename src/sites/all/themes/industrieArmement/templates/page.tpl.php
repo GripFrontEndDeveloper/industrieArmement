@@ -87,9 +87,8 @@
 ?>
 <div class="container-fluid">
     <div class= "row" >
-        <div id="header" class="<?php print $secondary_menu ? 'with-secondary-menu': 'without-secondary-menu'; ?>">
-            <div class="section clearfix">
-                <?php if ($logo): ?>
+        <div class="col-md-10 col-md-offset">
+            <?php if ($logo): ?>
                     <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home" id="logo">
                         <img src="<?php print $logo; ?>" alt="<?php print t('Home'); ?>" />
                     </a>
@@ -128,24 +127,11 @@
                     </div> <!-- /#secondary-menu -->
                 <?php endif; ?>
 
-            </div>
-        </div> <!-- /.section, /#header -->
-    </div>
-    <div class="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1">
-        <?php if ($messages): ?>
-            <div id="messages"><div class="section clearfix">
-                    <?php print $messages; ?>
-                </div></div> <!-- /.section, /#messages -->
-        <?php endif; ?>
+        </div>
 
-        <?php if ($page['featured']): ?>
-            <div id="featured"><div class="section clearfix">
-                    <?php print render($page['featured']); ?>
-                </div></div> <!-- /.section, /#featured -->
-        <?php endif; ?>
 
-        <div id="main-wrapper" class="clearfix"><div id="main" class="clearfix">
-
+    </div><!-- /#row-->
+    <div class="col-md-10 col-md-offset-1>
                 <?php if ($breadcrumb): ?>
                     <div id="breadcrumb"><?php print $breadcrumb; ?></div>
                 <?php endif; ?>
@@ -188,34 +174,20 @@
                         </div></div> <!-- /.section, /#sidebar-second -->
                 <?php endif; ?>
 
-            </div></div> <!-- /#main, /#main-wrapper -->
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <div class="section">
+                    <?php if ($page['footer']): ?>
+                        <div id="footer" class="clearfix">
+                            <?php print render($page['footer']); ?>
+                        </div> <!-- /#footer -->
+                    <?php endif; ?>
+                </div>
+            </div>
 
-        <?php if ($page['triptych_first'] || $page['triptych_middle'] || $page['triptych_last']): ?>
-            <div id="triptych-wrapper"><div id="triptych" class="clearfix">
-                    <?php print render($page['triptych_first']); ?>
-                    <?php print render($page['triptych_middle']); ?>
-                    <?php print render($page['triptych_last']); ?>
-                </div></div> <!-- /#triptych, /#triptych-wrapper -->
-        <?php endif; ?>
+        </div>
 
-        <div id="footer-wrapper"><div class="section">
 
-                <?php if ($page['footer_firstcolumn'] || $page['footer_secondcolumn'] || $page['footer_thirdcolumn'] || $page['footer_fourthcolumn']): ?>
-                    <div id="footer-columns" class="clearfix">
-                        <?php print render($page['footer_firstcolumn']); ?>
-                        <?php print render($page['footer_secondcolumn']); ?>
-                        <?php print render($page['footer_thirdcolumn']); ?>
-                        <?php print render($page['footer_fourthcolumn']); ?>
-                    </div> <!-- /#footer-columns -->
-                <?php endif; ?>
-
-                <?php if ($page['footer']): ?>
-                    <div id="footer" class="clearfix">
-                        <?php print render($page['footer']); ?>
-                    </div> <!-- /#footer -->
-                <?php endif; ?>
-
-            </div></div> <!-- /.section, /#footer-wrapper -->
 
     </div><!-- /#page -->
 </div> <!-- /#container-fluid -->

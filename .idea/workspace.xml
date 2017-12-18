@@ -2,15 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="103037ce-df07-4180-8674-bb8425343c38" name="Default" comment="fichier sql">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sites/all/themes/industrieArmement/images/hero.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sites/all/themes/industrieArmement/logo.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sites/all/themes/industrieArmement/templates/page.tpl.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sites/all/themes/industrieArmement/templates/views-view-fields-secteurs-page.tpl.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/themes/bartik/logo.png" afterPath="$PROJECT_DIR$/src/themes/bartik/logo.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sites/all/themes/industrieArmement/templates/html.tpl.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sites/all/themes/industrieArmement/templates/views-view-fields--donnsocioecon--page.tpl.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sites/all/themes/industrieArmement/templates/views-view-fields--footerstatic--block.tpl.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sites/all/themes/industrieArmement/templates/views-view-fields--secteurs--page.tpl.php" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/sites/all/themes/industrieArmement/templates/views-view-fields-secteurs-page.tpl.php" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sites/all/themes/industrieArmement/css/style.css" afterPath="$PROJECT_DIR$/src/sites/all/themes/industrieArmement/css/style.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sites/all/themes/industrieArmement/industrieArmement.info" afterPath="$PROJECT_DIR$/src/sites/all/themes/industrieArmement/industrieArmement.info" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sites/all/themes/industrieArmement/templates/page--front.tpl.php" afterPath="$PROJECT_DIR$/src/sites/all/themes/industrieArmement/templates/page--front.tpl.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/themes/bartik/bartik.info" afterPath="$PROJECT_DIR$/src/themes/bartik/bartik.info" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sites/all/themes/industrieArmement/templates/page.tpl.php" afterPath="$PROJECT_DIR$/src/sites/all/themes/industrieArmement/templates/page.tpl.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -32,19 +33,13 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="page--front.tpl.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="page--front.tpl.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sites/all/themes/industrieArmement/templates/page--front.tpl.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="140">
-              <caret line="156" column="24" lean-forward="false" selection-start-line="156" selection-start-column="24" selection-end-line="156" selection-end-column="24" />
+            <state relative-caret-position="722">
+              <caret line="198" column="0" lean-forward="true" selection-start-line="198" selection-start-column="0" selection-end-line="198" selection-end-column="0" />
               <folding>
-                <element signature="n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="false" />
-                <element signature="n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="false" />
-                <element signature="n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="false" />
-                <element signature="n#div#2;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="false" />
-                <element signature="e#8239#8446#0#PHP" expanded="false" />
-                <element signature="n#div#0;n#div#2;n#div#1;n#div#0;n#!!top" expanded="false" />
-                <element signature="e#10262#10674#0#PHP" expanded="false" />
+                <element signature="e#7#3688#0#PHP" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -54,17 +49,57 @@
         <entry file="file://$PROJECT_DIR$/src/sites/all/themes/industrieArmement/template.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="40">
-              <caret line="2" column="39" lean-forward="true" selection-start-line="2" selection-start-column="39" selection-end-line="2" selection-end-column="39" />
+              <caret line="2" column="39" lean-forward="false" selection-start-line="2" selection-start-column="39" selection-end-line="2" selection-end-column="39" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="page.tpl.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="html.tpl.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/sites/all/themes/industrieArmement/templates/html.tpl.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="440">
+              <caret line="63" column="0" lean-forward="false" selection-start-line="63" selection-start-column="0" selection-end-line="63" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="page.tpl.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/sites/all/themes/industrieArmement/templates/page.tpl.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="101" column="50" lean-forward="true" selection-start-line="101" selection-start-column="50" selection-end-line="101" selection-end-column="50" />
+            <state relative-caret-position="560">
+              <caret line="174" column="31" lean-forward="false" selection-start-line="174" selection-start-column="31" selection-end-line="174" selection-end-column="31" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="industrieArmement.info" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/sites/all/themes/industrieArmement/industrieArmement.info">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="440">
+              <caret line="22" column="0" lean-forward="true" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="views-view-fields--donnsocioecon--page.tpl.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/sites/all/themes/industrieArmement/templates/views-view-fields--donnsocioecon--page.tpl.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="260">
+              <caret line="13" column="0" lean-forward="true" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="views-view-fields--footerstatic--block.tpl.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/sites/all/themes/industrieArmement/templates/views-view-fields--footerstatic--block.tpl.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="160">
+              <caret line="30" column="70" lean-forward="true" selection-start-line="30" selection-start-column="12" selection-end-line="30" selection-end-column="70" />
               <folding />
             </state>
           </provider>
@@ -73,36 +108,31 @@
       <file leaf-file-name="style.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sites/all/themes/industrieArmement/css/style.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="160">
-              <caret line="8" column="1" lean-forward="true" selection-start-line="8" selection-start-column="1" selection-end-line="8" selection-end-column="1" />
+            <state relative-caret-position="100">
+              <caret line="5" column="26" lean-forward="false" selection-start-line="5" selection-start-column="26" selection-end-line="5" selection-end-column="26" />
               <folding />
             </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="hero.jpg" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/sites/all/themes/industrieArmement/images/hero.jpg">
-          <provider selected="true" editor-type-id="images">
-            <state />
           </provider>
         </entry>
       </file>
       <file leaf-file-name="bartik.info" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/themes/bartik/bartik.info">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="640">
+              <caret line="32" column="34" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="32" selection-end-column="34" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="views-view-fields-secteurs-page.tpl.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/sites/all/themes/industrieArmement/templates/views-view-fields-secteurs-page.tpl.php">
+      <file leaf-file-name="views-view-fields--secteurs--page.tpl.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/sites/all/themes/industrieArmement/templates/views-view-fields--secteurs--page.tpl.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="60" lean-forward="false" selection-start-line="0" selection-start-column="60" selection-end-line="0" selection-end-column="60" />
-              <folding />
+            <state relative-caret-position="540">
+              <caret line="27" column="35" lean-forward="false" selection-start-line="27" selection-start-column="25" selection-end-line="27" selection-end-column="35" />
+              <folding>
+                <element signature="e#7#1149#0#PHP" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -113,6 +143,7 @@
     <findStrings>
       <find>html.tpl.php</find>
       <find>site</find>
+      <find>triptych</find>
     </findStrings>
     <dirStrings>
       <dir>C:\xampp\htdocs\industrieArmement\src</dir>
@@ -137,18 +168,23 @@
         <option value="$USER_HOME$/Downloads/nacebelentreprise.sql" />
         <option value="$PROJECT_DIR$/db/industrie_armement.sql" />
         <option value="$PROJECT_DIR$/src/sites/all/themes/page--front.tpl.php" />
-        <option value="$PROJECT_DIR$/src/sites/all/themes/industrieArmement/industrieArmement.info" />
         <option value="$PROJECT_DIR$/src/sites/all/themes/industrieArmement/template.php" />
         <option value="$USER_HOME$/Desktop/index.html" />
         <option value="$PROJECT_DIR$/src/sites/all/themes/industrieArmement/templates/views-view-unformatted--secteurs.tpl.php" />
-        <option value="$PROJECT_DIR$/src/sites/all/themes/industrieArmement/templates/page.tpl.php" />
         <option value="$PROJECT_DIR$/src/themes/bartik/bartik.info" />
-        <option value="$PROJECT_DIR$/src/sites/all/themes/industrieArmement/css/style.css" />
         <option value="$PROJECT_DIR$/src/sites/all/themes/industrieArmement/templates/page.tpl.php, views-view-unformatted--secteurs--page.tpl.php" />
         <option value="$PROJECT_DIR$/src/sites/all/themes/industrieArmement/templates/views-view-fields--secteurs.tpl.php" />
         <option value="$PROJECT_DIR$/src/sites/all/themes/industrieArmement/templates/-view-fields--secteurs--page.tpl.php" />
         <option value="$PROJECT_DIR$/src/sites/all/themes/industrieArmement/templates/views-view-fields-secteurs-page.tpl.php" />
+        <option value="$PROJECT_DIR$/src/sites/all/themes/industrieArmement/templates/views-view-fields--footerstatic--block.tpl.php" />
+        <option value="$PROJECT_DIR$/src/sites/all/themes/industrieArmement/templates/views-view-fields--secteurs--page.tpl.php" />
+        <option value="$PROJECT_DIR$/src/sites/all/themes/industrieArmement/css/style.css" />
+        <option value="$PROJECT_DIR$/src/sites/all/themes/industrieArmement/industrieArmement.info" />
+        <option value="$PROJECT_DIR$/src/themes/bartik/templates/views-view-fields--d-finition-donn-es-socio-conomique--page.tpl.php" />
+        <option value="$PROJECT_DIR$/src/themes/bartik/templates/views-view-fields--donnsocioecon--page.tpl.php" />
+        <option value="$PROJECT_DIR$/src/sites/all/themes/industrieArmement/templates/views-view-fields--donnsocioecon--page.tpl.php" />
         <option value="$PROJECT_DIR$/src/sites/all/themes/industrieArmement/templates/page--front.tpl.php" />
+        <option value="$PROJECT_DIR$/src/sites/all/themes/industrieArmement/templates/page.tpl.php" />
       </list>
     </option>
   </component>
@@ -163,6 +199,9 @@
     <option name="x" value="-7" />
     <option name="width" value="974" />
     <option name="height" value="1047" />
+  </component>
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -179,8 +218,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -236,26 +275,27 @@
               <item name="all" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="themes" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="industrieArmement" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="css" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="templates" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
             <path>
               <item name="industrieArmement" type="b2602c69:ProjectViewProjectNode" />
               <item name="industrieArmement" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="sites" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="all" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="themes" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="industrieArmement" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="images" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
             <path>
               <item name="industrieArmement" type="b2602c69:ProjectViewProjectNode" />
               <item name="industrieArmement" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="sites" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="all" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="themes" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="bartik" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="industrieArmement" type="b2602c69:ProjectViewProjectNode" />
               <item name="industrieArmement" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="themes" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="bartik" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="templates" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
           </expand>
@@ -270,16 +310,16 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\xampp\htdocs\industrieArmement\src\sites\all\themes\industrieArmement\images" />
-      <recent name="C:\xampp\htdocs\industrieArmement\src\sites/all/themes/industrieArmement" />
-      <recent name="C:\xampp\htdocs\industrieArmement\src\themes\bartik" />
-      <recent name="C:\xampp\htdocs\industrieArmement\src\sites\all\themes\industrieArmement\templates" />
-      <recent name="C:\xampp\htdocs\industrieArmement\src\sites/all/themes/" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\xampp\htdocs\industrieArmement\src\sites\all\themes\industrieArmement\templates" />
       <recent name="C:\xampp\htdocs\industrieArmement\industrieArmement\industrieArmement" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\industrieArmement\src\sites\all\themes\industrieArmement\templates" />
+      <recent name="C:\xampp\htdocs\industrieArmement\src\sites\all\themes\industrieArmement\images" />
+      <recent name="C:\xampp\htdocs\industrieArmement\src\sites/all/themes/industrieArmement" />
+      <recent name="C:\xampp\htdocs\industrieArmement\src\themes\bartik" />
+      <recent name="C:\xampp\htdocs\industrieArmement\src\sites/all/themes/" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -322,6 +362,7 @@
       <workItem from="1513269712709" duration="51000" />
       <workItem from="1513330831073" duration="6759000" />
       <workItem from="1513338992557" duration="13961000" />
+      <workItem from="1513593720104" duration="14523000" />
     </task>
     <task id="LOCAL-00001" summary="structure dossier + scripts mysql">
       <created>1512237049022</created>
@@ -348,13 +389,13 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="78208000" />
+    <option name="totallyTimeSpent" value="92731000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.0" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14407684" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -438,27 +479,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/themes/bartik/templates/comment-wrapper.tpl.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/themes/bartik/templates/maintenance-page.tpl.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/scripts/mysql-export.sh">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="20">
-          <caret line="1" column="79" lean-forward="false" selection-start-line="1" selection-start-column="61" selection-end-line="1" selection-end-column="79" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/scripts/mysql-import.sh">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="20">
@@ -694,7 +714,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -718,19 +737,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sites/all/themes/industrieArmement/industrieArmement.info">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="600">
-          <caret line="30" column="0" lean-forward="false" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/Downloads/template.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="280">
           <caret line="14" column="5" lean-forward="false" selection-start-line="14" selection-start-column="5" selection-end-line="14" selection-end-column="5" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -738,7 +748,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="220">
           <caret line="11" column="27" lean-forward="false" selection-start-line="11" selection-start-column="27" selection-end-line="11" selection-end-column="27" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -766,9 +775,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="94">
           <caret line="584" column="5" lean-forward="false" selection-start-line="584" selection-start-column="5" selection-end-line="584" selection-end-column="5" />
-          <folding>
-            <marker date="1512396824484" expanded="true" signature="57003:57077" ph="SELECT * FRO... $" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -776,21 +782,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sites/all/themes/industrieArmement/template.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="40">
-          <caret line="2" column="39" lean-forward="true" selection-start-line="2" selection-start-column="39" selection-end-line="2" selection-end-column="39" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sites/all/themes/industrieArmement/images/hero.jpg">
-      <provider selected="true" editor-type-id="images">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/modules/system/html.tpl.php">
@@ -805,55 +797,95 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-640">
           <caret line="83" column="21" lean-forward="false" selection-start-line="83" selection-start-column="21" selection-end-line="83" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sites/all/themes/industrieArmement/images/hero.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sites/all/themes/industrieArmement/templates/html.tpl.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="440">
+          <caret line="63" column="0" lean-forward="false" selection-start-line="63" selection-start-column="0" selection-end-line="63" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sites/all/themes/industrieArmement/template.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="40">
+          <caret line="2" column="39" lean-forward="false" selection-start-line="2" selection-start-column="39" selection-end-line="2" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sites/all/themes/industrieArmement/templates/views-view-fields--secteurs--page.tpl.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="540">
+          <caret line="27" column="35" lean-forward="false" selection-start-line="27" selection-start-column="25" selection-end-line="27" selection-end-column="35" />
+          <folding>
+            <element signature="e#7#1149#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/themes/bartik/bartik.info">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="640">
+          <caret line="32" column="34" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="32" selection-end-column="34" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sites/all/themes/industrieArmement/css/style.css">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="100">
+          <caret line="5" column="26" lean-forward="false" selection-start-line="5" selection-start-column="26" selection-end-line="5" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sites/all/themes/industrieArmement/templates/views-view-fields--footerstatic--block.tpl.php">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="160">
-          <caret line="8" column="1" lean-forward="true" selection-start-line="8" selection-start-column="1" selection-end-line="8" selection-end-column="1" />
+          <caret line="30" column="70" lean-forward="true" selection-start-line="30" selection-start-column="12" selection-end-line="30" selection-end-column="70" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sites/all/themes/industrieArmement/templates/views-view-fields-secteurs-page.tpl.php">
+    <entry file="file://$PROJECT_DIR$/src/sites/all/themes/industrieArmement/templates/views-view-fields--donnsocioecon--page.tpl.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="60" lean-forward="false" selection-start-line="0" selection-start-column="60" selection-end-line="0" selection-end-column="60" />
+        <state relative-caret-position="260">
+          <caret line="13" column="0" lean-forward="true" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sites/all/themes/industrieArmement/templates/page.tpl.php">
+    <entry file="file://$PROJECT_DIR$/src/sites/all/themes/industrieArmement/industrieArmement.info">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="101" column="50" lean-forward="true" selection-start-line="101" selection-start-column="50" selection-end-line="101" selection-end-column="50" />
+        <state relative-caret-position="440">
+          <caret line="22" column="0" lean-forward="true" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sites/all/themes/industrieArmement/templates/page--front.tpl.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="156" column="24" lean-forward="false" selection-start-line="156" selection-start-column="24" selection-end-line="156" selection-end-column="24" />
+        <state relative-caret-position="722">
+          <caret line="198" column="0" lean-forward="true" selection-start-line="198" selection-start-column="0" selection-end-line="198" selection-end-column="0" />
           <folding>
-            <element signature="n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="false" />
-            <element signature="n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="false" />
-            <element signature="n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="false" />
-            <element signature="n#div#2;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="false" />
-            <element signature="e#8239#8446#0#PHP" expanded="false" />
-            <element signature="n#div#0;n#div#2;n#div#1;n#div#0;n#!!top" expanded="false" />
-            <element signature="e#10262#10674#0#PHP" expanded="false" />
+            <element signature="e#7#3688#0#PHP" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sites/all/themes/industrieArmement/templates/page.tpl.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="560">
+          <caret line="174" column="31" lean-forward="false" selection-start-line="174" selection-start-column="31" selection-end-line="174" selection-end-column="31" />
+          <folding />
         </state>
       </provider>
     </entry>

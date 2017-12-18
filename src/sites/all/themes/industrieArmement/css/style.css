@@ -2,8 +2,13 @@ header{
     background-color: black;
 }
 div#heroPage.row{
-    background-image: url(images/hero.jpg);
-    background-repeat: no-repeat;
-    background-attachment:fixed;
-    background-position: top right
+    background: url("../images/hero.jpg") no-repeat center center fixed;
+    background-size:cover;
+
+}
+.vueSecteur{
+    border: solid red 3px;
+}
+#sidebar-first{
+    border: solid green 3px;
 }

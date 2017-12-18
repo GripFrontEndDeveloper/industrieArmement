@@ -12,6 +12,17 @@ regions[content] = Contenu du site
 regions[footer] = footer
 regions[sidebar_second] = Aside
 
+regions[help] = Help
+regions[page_top] = Page top
+regions[page_bottom] = Page bottom
+regions[highlighted] = Highlighted
+
+regions[featured] = Featured
+regions[content] = Content
+regions[sidebar_first] = Sidebar first
+
+settings[shortcut_module_link] = 0
+
 ; Features
 ;----------
 features[] = logo
@@ -23,7 +34,10 @@ features[] = secondary menu
 
 ; Stylesheets
 ;----------
+stylesheets[all][] = css/layout.css
 stylesheets[all][] = css/style.css
+stylesheets[all][] = css/colors.css
+stylesheets[print][] = css/print.css
 
 ; Javascript
 ;----------
