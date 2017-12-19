@@ -86,108 +86,63 @@
  */
 ?>
 <div class="container-fluid">
-    <div class= "row" >
-        <div class="col-md-10 col-md-offset">
-            <?php if ($logo): ?>
-                    <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home" id="logo">
-                        <img src="<?php print $logo; ?>" alt="<?php print t('Home'); ?>" />
-                    </a>
-                <?php endif; ?>
-                <?php print render($page['header']); ?>
-                <?php if ($main_menu): ?>
-                    <div id="main-menu" class="navigation">
-                        <?php print theme('links__system_main_menu', array(
-                            'links' => $main_menu,
-                            'attributes' => array(
-                                'id' => 'main-menu-links',
-                                'class' => array('links', 'clearfix'),
-                            ),
-                            'heading' => array(
-                                'text' => t('Main menu'),
-                                'level' => 'h2',
-                                'class' => array('element-invisible'),
-                            ),
-                        )); ?>
-                    </div> <!-- /#main-menu -->
-                <?php endif; ?>
-                <?php if ($secondary_menu): ?>
-                    <div id="secondary-menu" class="navigation">
-                        <?php print theme('links__system_secondary_menu', array(
-                            'links' => $secondary_menu,
-                            'attributes' => array(
-                                'id' => 'secondary-menu-links',
-                                'class' => array('links', 'inline', 'clearfix'),
-                            ),
-                            'heading' => array(
-                                'text' => t('Secondary menu'),
-                                'level' => 'h2',
-                                'class' => array('element-invisible'),
-                            ),
-                        )); ?>
-                    </div> <!-- /#secondary-menu -->
-                <?php endif; ?>
+<!-- ------------------/#navigation principal --------------------->
+   <div class="row navigationLogo">
+       <div class="col-md-8 col-md-offset-2">
+           <div class="col-md-2">
+               <div id="main-menu" class="<?php print $secondary_menu ? 'with-secondary-menu': 'without-secondary-menu'; ?>">
+                   <?php if ($logo): ?>
+                           <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home" id="logo">
+                               <img src="<?php print $logo; ?>" alt="<?php print t('Home'); ?>" />
+                           </a>
+                   <?php endif; ?>
+               </div>
+           </div>
+           <div class="col-md-7 col-md-offset-3">
+               <?php if (($page['navigation']))?>
+               <?php print render($page['navigation'])?>
+           </div>
+       </div>
+   </div>
 
+ <!-- ------------------/# breadcrumb --------------------->
+     <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <?php if ($breadcrumb): ?>
+                <div id="breadcrumb"><?php print $breadcrumb; ?></div>
+            <?php endif; ?>
         </div>
-
-
-    </div><!-- /#row-->
-    <div class="col-md-10 col-md-offset-1>
-                <?php if ($breadcrumb): ?>
-                    <div id="breadcrumb"><?php print $breadcrumb; ?></div>
-                <?php endif; ?>
-
-                <?php if ($page['sidebar_first']): ?>
-                    <div id="sidebar-first" class="column sidebar"><div class="section">
-                            <?php print render($page['sidebar_first']); ?>
-                        </div></div> <!-- /.section, /#sidebar-first -->
-                <?php endif; ?>
-
-                <div id="content" class="column"><div class="section">
-                        <?php if ($page['highlighted']): ?><div id="highlighted"><?php print render($page['highlighted']); ?></div><?php endif; ?>
-                        <a id="main-content"></a>
-                        <?php print render($title_prefix); ?>
-                        <?php if ($title): ?>
-                            <h1 class="title" id="page-title">
-                                <?php print $title; ?>
-                            </h1>
-                        <?php endif; ?>
-                        <?php print render($title_suffix); ?>
-                        <?php if ($tabs): ?>
-                            <div class="tabs">
-                                <?php print render($tabs); ?>
-                            </div>
-                        <?php endif; ?>
-                        <?php print render($page['help']); ?>
-                        <?php if ($action_links): ?>
-                            <ul class="action-links">
-                                <?php print render($action_links); ?>
-                            </ul>
-                        <?php endif; ?>
-                        <?php print render($page['content']); ?>
-                        <?php print $feed_icons; ?>
-
-                    </div></div> <!-- /.section, /#content -->
-
-                <?php if ($page['sidebar_second']): ?>
-                    <div id="sidebar-second" class="column sidebar"><div class="section">
-                            <?php print render($page['sidebar_second']); ?>
-                        </div></div> <!-- /.section, /#sidebar-second -->
-                <?php endif; ?>
-
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-                <div class="section">
-                    <?php if ($page['footer']): ?>
-                        <div id="footer" class="clearfix">
-                            <?php print render($page['footer']); ?>
-                        </div> <!-- /#footer -->
-                    <?php endif; ?>
-                </div>
+    </div>
+<!-- ------------------/#Contenu du site --------------------->
+    <div class="row contenuSite">
+        <div class="col-md-10 col-md-offset-1">
+            <div class="col-md-9 page">
+                <?php if($page['content'])?>
+                <?php  print render($page['content']) ?>
             </div>
+            <div class="col-md-2 col-md-offset-1 aside">
+                <?php if ($page['sidebar_second']): ?>
+                    <div id="sidebar-second" class="column sidebar">
+                        <div class="section">
+                            <?php print render($page['sidebar_second']); ?>
+                        </div><!-- /.section -->
+                    </div> <!--/#sidebar-second -->
+                <?php endif; ?>
+            </div>
+        </div>
+    </div>
 
+<!-- ------------------/#footer --------------------->
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="section">
+                <?php if ($page['footer']): ?>
+                    <div id="footer" class="clearfix">
+                        <?php print render($page['footer']); ?>
+                    </div> <!-- /#footer -->
+                <?php endif; ?>
+            </div>
         </div>
 
-
-
-    </div><!-- /#page -->
+    </div>
 </div> <!-- /#container-fluid -->

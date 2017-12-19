@@ -2,13 +2,39 @@ header{
     background-color: black;
 }
 div#heroPage.row{
-    background: url("../images/hero.jpg") no-repeat center center fixed;
+    background: url("../images/hero.jpg") no-repeat center center ;
     background-size:cover;
-
+    height:45vh;
 }
 .vueSecteur{
     border: solid red 3px;
 }
 #sidebar-first{
     border: solid green 3px;
+}
+.contenuSite{
+    /*border: black solid 10px;*/
+}
+.page{
+    border: solid green 3px;
+}
+.aside{
+    border: solid blue 3px;
+}
+.SecteurVue{
+    border: solid yellow 3px;
+}
+.col-md-5.secteurImg{
+    border: solid red 3px;
+}
+.secteurContenu{
+    /*border: solid black 3px;*/
+}
+.secteurContent{
+    border: solid green 3px;
+    width:40px;
+    height:40px;
+}
+.quote{
+    background: url("../images/pictoQuotes.png") no-repeat left top;
 }

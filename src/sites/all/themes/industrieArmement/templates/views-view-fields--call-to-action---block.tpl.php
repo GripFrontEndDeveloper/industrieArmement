@@ -24,14 +24,8 @@
  * @ingroup views_templates
  */
 ?>
-    <?php print $field->content; ?>
-    <div class="col-md-12 SecteurVue">
-        <div class="col-md-5 secteurImg">
-               <?php print $fields[field_image_secteur]->content ?>
-        </div>
-        <div class="col-md-7 secteurContenu">
-            <div class="col-md-12 secteurTitle"><h3><?php print $fields[title]->content ?></h3></div>
-            <div class="col-md-12 secteurContent"><?php print $fields[field_corps_texte_secteur]->content ?>
-            </div>
-        </div>
-    </div>
+<div class="col-md-4">
+    <div class="col-md-12"><?php print $fields['field_icon_call_to_action']->content ?></div>
+    <div class="col-md-12"><h3><?php print $fields['title']->content ?></h3></div>
+    <div class="col-md-12"><?php print $fields['field_corps_call_to_action']->content ?></div>
+</div>
