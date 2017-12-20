@@ -9,7 +9,12 @@ screenshot = screenshot.png
 regions[navigation] = Navigation principale
 regions[header] = Header
 regions[content] = Contenu du site
+regions[section] = Plus aller plus loin
+regions[section1] = En quelques chiffres
 regions[sidebar_second] = Aside
+regions[footercontact] = Contact GRIP
+regions[footerbdd] = Les bases de données du GRIP
+regions[footersubventions] = Les subventions de la BDD
 regions[footer] = footer
 
 regions[page_top] = Page top

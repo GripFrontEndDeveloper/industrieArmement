@@ -24,13 +24,12 @@
  * @ingroup views_templates
  */
 ?>
-    <?php print $field->content; ?>
-    <div class="col-md-12 SecteurVue">
-        <div class="col-md-5 secteurImg">
-               <?php print $fields['field_image_secteur']->content ?>
+<div class="col-md-12">
+        <div class="col-md-5 icon">
+            <?php print $fields['field_icon_quelques_chiffres']->content ?>
         </div>
-        <div class="col-md-7 secteurContenu">
-            <div class="col-md-12 secteurTitle"><h3><?php print $fields['title']->content ?></h3></div>
-            <div class="col-md-12 secteurContent"><?php print $fields['field_corps_texte_secteur']->content ?></div>
+        <div class="col-md-7 chiffres">
+            <div class="col-md-12"><?php print $fields['field_chiffres_en_quelques_chiff']->content ?></div>
+            <div class="col-md-12"><?php print $fields['title']->content ?></div>
         </div>
-    </div>
+</div>

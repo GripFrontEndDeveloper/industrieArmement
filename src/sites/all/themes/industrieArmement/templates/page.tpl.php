@@ -116,7 +116,7 @@
 <!-- ------------------/#Contenu du site --------------------->
     <div class="row contenuSite">
         <div class="col-md-10 col-md-offset-1">
-            <div class="col-md-9 page">
+            <div class="col-md-9">
                 <?php if($page['content'])?>
                 <?php  print render($page['content']) ?>
             </div>
@@ -125,8 +125,8 @@
                     <div id="sidebar-second" class="column sidebar">
                         <div class="section">
                             <?php print render($page['sidebar_second']); ?>
-                        </div><!-- /.section -->
-                    </div> <!--/#sidebar-second -->
+                        </div><!--  -->
+                    </div> <!--/# -->
                 <?php endif; ?>
             </div>
         </div>

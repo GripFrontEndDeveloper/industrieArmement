@@ -113,8 +113,38 @@
             </div>
         </div>
     </div>
+    <!-- ------------------/#Plus loin et quelques chiffres --------------------->
+    <div class="col-md-6 col-md-offset-1 plusLoin">
+        <div class="col-md-2">
+            <img src="sites/all/themes/industrieArmement/images/pictoDownload.png" alt=" Picto pour télécharger">
+        </div>
+        <div class="col-md-10">
+            <?php if($page['section']) ?>
+            <?php print render($page['section']) ?>
+        </div>
+    </div>
+    <div class="EnQuelqueChiffre col-md-2 col-md-offset-1">
+        <?php if($page['section1']) ?>
+        <?php print render($page['section1']) ?>
+    </div>
+
     <!-- ------------------/#footer --------------------->
-     <div class="row" id="footer-wrapper">
+    <div class="row footer1">
+        <?php if (($page['footercontact']) OR ($page['footerbdd']) OR ($page['footersubventions'])) : ; ?>
+        <div class="col-md-10 col-md-offset-2">
+            <div class="col-md-4">
+                <?php print render($page['footercontact']); ?>
+            </div>
+            <div class="col-md-4">
+                <?php print render($page['footerbdd']); ?>
+            </div>
+            <div class="col-md-4">
+                <?php print render($page['footersubventions']); ?>
+            </div>
+        </div>
+        <?php endif; ?>
+    </div>
+     <div class="row footer2">
          <div  class= "col-md-10 col-md-offset-1" >
              <?php if ($page['footer']): ?>
                  <div id="footer" class="clearfix">
@@ -123,4 +153,5 @@
              <?php endif; ?>
          </div>
      </div> <!-- /.section, /#footer-wrapper -->
+    <!-- ------------------/#footer --------------------->
 </div> <!-- /#container-fluid -->
