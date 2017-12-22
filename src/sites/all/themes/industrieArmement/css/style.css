@@ -2,9 +2,9 @@ header{
     background-color: black;
 }
 div#heroPage.row{
-    background: url("../images/hero.jpg") no-repeat center center ;
+    background: url("../images/heroIndex.jpg") no-repeat center center ;
     background-size:cover;
-    height:45vh;
+    height:55vh;
 }
 .vueSecteur{}
 

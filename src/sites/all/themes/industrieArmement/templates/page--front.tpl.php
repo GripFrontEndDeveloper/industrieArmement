@@ -153,5 +153,6 @@
              <?php endif; ?>
          </div>
      </div> <!-- /.section, /#footer-wrapper -->
+
     <!-- ------------------/#footer --------------------->
 </div> <!-- /#container-fluid -->
