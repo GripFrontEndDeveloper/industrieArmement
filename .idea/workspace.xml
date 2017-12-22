@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="103037ce-df07-4180-8674-bb8425343c38" name="Default" comment="fichier sql">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sites/all/themes/industrieArmement/images/heroIndex.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sites/all/themes/industrieArmement/css/style.css" afterPath="$PROJECT_DIR$/src/sites/all/themes/industrieArmement/css/style.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sites/all/themes/industrieArmement/templates/page--front.tpl.php" afterPath="$PROJECT_DIR$/src/sites/all/themes/industrieArmement/templates/page--front.tpl.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sites/all/themes/industrieArmement/templates/views-view-fields--secteurs--page.tpl.php" afterPath="$PROJECT_DIR$/src/sites/all/themes/industrieArmement/templates/views-view-fields--secteurs--page.tpl.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -47,7 +44,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="style.css" pinned="false" current-in-tab="true">
+      <file leaf-file-name="style.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sites/all/themes/industrieArmement/css/style.css">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="100">
@@ -64,13 +61,13 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="views-view-fields--secteurs--page.tpl.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="views-view-fields--secteurs--page.tpl.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/sites/all/themes/industrieArmement/templates/views-view-fields--secteurs--page.tpl.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="220">
-              <caret line="33" column="110" lean-forward="false" selection-start-line="33" selection-start-column="110" selection-end-line="33" selection-end-column="110" />
+            <state relative-caret-position="200">
+              <caret line="32" column="111" lean-forward="false" selection-start-line="32" selection-start-column="111" selection-end-line="32" selection-end-column="111" />
               <folding>
-                <marker date="1513776222102" expanded="true" signature="1554:1620" ph="..." />
+                <marker date="1513965434301" expanded="true" signature="1519:1586" ph="..." />
               </folding>
             </state>
           </provider>
@@ -190,9 +187,9 @@
         <option value="$PROJECT_DIR$/src/sites/all/themes/industrieArmement/templates/views-view-fields--pour-aller-plus-loin--block.tpl.php" />
         <option value="$PROJECT_DIR$/src/sites/all/themes/industrieArmement/templates/views-view-fields--en-quelques-chiffres--block-1.tpl.php" />
         <option value="$PROJECT_DIR$/src/sites/all/themes/industrieArmement/templates/page.tpl.php" />
-        <option value="$PROJECT_DIR$/src/sites/all/themes/industrieArmement/templates/views-view-fields--secteurs--page.tpl.php" />
         <option value="$PROJECT_DIR$/src/sites/all/themes/industrieArmement/templates/page--front.tpl.php" />
         <option value="$PROJECT_DIR$/src/sites/all/themes/industrieArmement/css/style.css" />
+        <option value="$PROJECT_DIR$/src/sites/all/themes/industrieArmement/templates/views-view-fields--secteurs--page.tpl.php" />
       </list>
     </option>
   </component>
@@ -282,7 +279,7 @@
               <item name="all" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="themes" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="industrieArmement" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="images" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="templates" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
             <path>
               <item name="industrieArmement" type="b2602c69:ProjectViewProjectNode" />
@@ -358,7 +355,7 @@
       <workItem from="1513593720104" duration="14523000" />
       <workItem from="1513674305074" duration="26581000" />
       <workItem from="1513761674893" duration="17944000" />
-      <workItem from="1513940042731" duration="2197000" />
+      <workItem from="1513940042731" duration="3230000" />
     </task>
     <task id="LOCAL-00001" summary="structure dossier + scripts mysql">
       <created>1512237049022</created>
@@ -385,7 +382,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="139453000" />
+    <option name="totallyTimeSpent" value="140486000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -754,6 +751,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="440">
           <caret line="63" column="0" lean-forward="false" selection-start-line="63" selection-start-column="0" selection-end-line="63" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -776,6 +774,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="600">
           <caret line="30" column="6" lean-forward="false" selection-start-line="30" selection-start-column="6" selection-end-line="30" selection-end-column="6" />
+          <folding>
+            <element signature="e#7#1149#0#PHP" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -828,16 +829,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sites/all/themes/industrieArmement/templates/views-view-fields--secteurs--page.tpl.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="33" column="110" lean-forward="false" selection-start-line="33" selection-start-column="110" selection-end-line="33" selection-end-column="110" />
-          <folding>
-            <marker date="1513776222102" expanded="true" signature="1554:1620" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/sites/all/themes/industrieArmement/templates/page.tpl.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="700">
@@ -884,6 +875,16 @@
         <state relative-caret-position="100">
           <caret line="5" column="26" lean-forward="false" selection-start-line="5" selection-start-column="26" selection-end-line="5" selection-end-column="26" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sites/all/themes/industrieArmement/templates/views-view-fields--secteurs--page.tpl.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="32" column="111" lean-forward="false" selection-start-line="32" selection-start-column="111" selection-end-line="32" selection-end-column="111" />
+          <folding>
+            <marker date="1513965434301" expanded="true" signature="1519:1586" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
