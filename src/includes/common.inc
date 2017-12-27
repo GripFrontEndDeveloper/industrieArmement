@@ -7452,7 +7452,7 @@ function drupal_write_record($table, &$record, $primary_keys = array()) {
  * - base: Name of a base theme, if applicable; e.g., base = zen.
  * - regions: Listed regions; e.g., region[left] = Left sidebar.
  * - features: Features available; e.g., features[] = logo.
- * - stylesheets: Theme stylesheets; e.g., stylesheets[all][] = my-style.css.
+ * - stylesheets: Theme stylesheets; e.g., stylesheets[all][] = my-style.css.less.
  * - scripts: Theme scripts; e.g., scripts[] = my-script.js.
  *
  * See bartik.info for an example of a theme .info file.

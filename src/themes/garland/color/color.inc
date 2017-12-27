@@ -168,7 +168,7 @@ $info = array(
 
   // CSS files (excluding @import) to rewrite with new color scheme.
   'css' => array(
-    'style.css',
+    'style.css.less',
   ),
 
   // Gradient definitions.
