@@ -23,7 +23,7 @@
  *
  * @ingroup views_templates
  */
-?>
+?>ow to create a new field manu
         <ul>
             <div class="col-md-12"><li class="lien"><?php  print $fields['title']->content ?></div>
             </li>

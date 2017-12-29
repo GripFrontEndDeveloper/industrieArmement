@@ -27,6 +27,6 @@
 <div class="col-md-3 teaser">
     <div class="col-md-12 logoTeaser"><?php print $fields['field_entrlogodelentreprise']->content ?> </div>
     <div class="col-md-4 regionTeaser"><?php print $fields['field_image_r_gion']->content ?> </div>
-    <div class="col-md-8 secteurTeaser"><?php print $fields['field_entsecteur']->content ?></div>
+    <div class="col-md-8 secteurTeaser"><?php print $fields['field_secteur_node']->content ?></div>
     <div class="col-md-12 descriptionTeaser"><?php print $fields['body']->content ?></div>
 </div>
